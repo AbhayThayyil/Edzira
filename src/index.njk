@@ -1,0 +1,246 @@
+---
+layout: layouts/base.njk
+isHome: true
+bodyClass: has-dark-hero
+description: Edzira helps universities, colleges and public institutions modernise learning, strengthen student outcomes and build connected, future-ready academic ecosystems.
+---
+{% from "partials/icons.njk" import arrow, icon %}
+{% from "partials/photo.njk" import photo with context %}
+
+{# ============ HERO ============ #}
+<section class="hero section--dark" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow" data-reveal>Academic Digital Transformation</p>
+      <h1 id="hero-title" data-reveal>Empowering Institutions.<br><span class="text-accent">Enabling Futures.</span></h1>
+      <p class="lead" data-reveal>Edzira helps universities, colleges and public institutions modernise learning, strengthen student outcomes and build connected, future-ready academic ecosystems.</p>
+      <div class="btn-row" data-reveal>
+        <a class="btn" href="{{ site.cta.href }}">{{ site.cta.label }} {{ arrow() }}</a>
+        <a class="btn btn--ghost" href="/solutions/">Explore Solutions {{ arrow() }}</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" data-reveal="scale">
+      <div class="hero__photo">{{ photo("hero-campus", "University campus building at golden hour", "(min-width: 1020px) 520px, 90vw", true) }}</div>
+      <svg class="hero__ring" viewBox="0 0 600 600" aria-hidden="true">
+        <defs><linearGradient id="ring-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7DF3FF"/><stop offset=".5" stop-color="#22D3EE"/><stop offset="1" stop-color="#2563EB"/></linearGradient></defs>
+        <circle cx="300" cy="300" r="268" fill="none" stroke="rgb(255 255 255 / .1)" stroke-width="1.5"/>
+        <path class="orbit-arc" pathLength="1" d="M300 568A268 268 0 1 1 568 300" fill="none" stroke="url(#ring-g)" stroke-width="3" stroke-linecap="round"/>
+        <g class="hero__ring-dots"><circle cx="300" cy="32" r="5" fill="#22D3EE"/><circle cx="32" cy="300" r="3.5" fill="#7DF3FF"/><circle cx="490" cy="490" r="3.5" fill="#2563EB"/></g>
+      </svg>
+      <ul class="hero__nodes" role="list" aria-label="The Edzira ecosystem" data-reveal-group>
+        {% for n in [["book","Learning"],["systems","Student Systems"],["users","Enablement"],["chart","Analytics"],["shield","Cyber Readiness"],["target","Outcomes"]] %}
+        <li class="hero__node hero__node--{{ loop.index }}" data-reveal="scale"><span class="hero__node-icon">{{ icon(n[0], 20) }}</span>{{ n[1] }}</li>
+        {% endfor %}
+      </ul>
+      <div class="hero__card hero__card--a">
+        <span class="hero__card-icon">{{ icon("calendar", 18) }}</span>
+        <div><strong>Start with a pilot</strong><span>8 week, 12 week or semester models</span></div>
+      </div>
+      <div class="hero__card hero__card--b">
+        <span class="hero__card-icon">{{ icon("refresh", 18) }}</span>
+        <div><strong>5-step approach</strong><span>Discover to Evolve</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============ WHAT WE ENABLE ============ #}
+<section class="section" aria-labelledby="enable-title">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">What we enable</p>
+      <h2 id="enable-title">One partner for the whole academic ecosystem</h2>
+      <p class="lead">Five connected solution areas, delivered together or one at a time, so institutions can modernise at their own pace.</p>
+    </header>
+    <div class="bento" data-reveal-group>
+      {% set solutionDetail = {
+        "Digital Learning": { icon: "book", text: "Modern learning experiences with digital content, assessments, certifications and faculty development.", tags: ["Digital content", "LMS platforms", "Assessments", "Certification pathways"] },
+        "Academic Systems": { icon: "systems", text: "Student information systems and academic operations that simplify administration and improve the student experience.", tags: ["Student information system", "Academic administration", "Data & reporting"] },
+        "Institutional Transformation": { icon: "landmark", text: "Outcome-driven programmes that improve engagement, performance and impact across campus.", tags: ["Digital campus", "Outcome analytics", "Change management"] },
+        "Cyber Readiness": { icon: "shield", text: "Awareness programmes and skills pathways that build safer digital environments.", tags: ["Awareness programmes", "Simulations & labs", "Policy & governance"] },
+        "Training & Enablement": { icon: "users", text: "Adoption at scale through training, capacity building and continuous enablement.", tags: ["Training programmes", "Capacity building", "Ongoing support"] }
+      } %}
+      {% for s in nav.solutions %}{% set d = solutionDetail[s.title] %}
+      <a class="bento__card{% if loop.first %} bento__card--feature{% endif %}" href="{{ s.href }}" data-reveal>
+        <span class="bento__icon">{{ icon(d.icon, 26) }}</span>
+        <h3>{{ s.title }}</h3>
+        <p>{{ d.text }}</p>
+        <ul class="tags" role="list">{% for t in d.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+        <span class="link-arrow">Learn more {{ arrow() }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ============ CONNECTED ECOSYSTEM ============ #}
+<section class="section ecosystem-wrap" aria-labelledby="eco-title">
+  <div class="container">
+    <div class="ecosystem section--dark" data-reveal>
+      <div class="ecosystem__copy">
+        <p class="eyebrow">Connected ecosystem</p>
+        <h2 id="eco-title">Everything works together. <span class="text-accent">Outcomes come together.</span></h2>
+        <p>Learning, academic systems, people and data are connected from day one, so improvements in one area lift the whole institution.</p>
+      </div>
+      <div class="eco" data-reveal-group>
+        <ol class="eco__nodes" role="list">
+          {% for n in [["book","Learning"],["systems","Student Systems"],["users","Enablement"],["chart","Analytics"],["target","Outcomes"]] %}
+          <li class="eco__node" data-reveal="scale"><span class="eco__ring">{{ icon(n[0], 26) }}</span><span>{{ n[1] }}</span></li>
+          {% endfor %}
+        </ol>
+        <svg class="eco__lines" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+          {% for x in [100, 300, 500, 700, 900] %}
+          <path class="orbit-arc" pathLength="1" d="M{{ x }} 0 C{{ x }} 70 500 40 500 112" fill="none" stroke="#22D3EE" stroke-opacity=".55" stroke-width="2" vector-effect="non-scaling-stroke"/>
+          {% endfor %}
+        </svg>
+        <div class="eco__result" data-reveal="scale">{{ icon("landmark", 22) }} Institution Transformation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============ WHO WE SERVE ============ #}
+<section class="section section--soft" aria-labelledby="serve-title">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">Who we serve</p>
+      <h2 id="serve-title">Built for institutions that shape futures</h2>
+    </header>
+    <div class="serve" data-reveal-group>
+      {% for s in [
+        { key: "serve-universities", icon: "cap", title: "Universities", text: "Modern learning delivery and digital campuses for future-ready universities.", alt: "Students walking across a university campus" },
+        { key: "serve-colleges", icon: "school", title: "Colleges", text: "Industry-aligned capability development and academic excellence at scale.", alt: "College students working together on laptops" },
+        { key: "serve-government", icon: "landmark", title: "Government & Public Institutions", text: "Large-scale learning initiatives for workforce and citizen development.", alt: "A public institution building" }
+      ] %}
+      <article class="serve__card" data-reveal>
+        <div class="serve__media">{{ photo(s.key, s.alt, "(min-width: 900px) 380px, 90vw") }}</div>
+        <div class="serve__body">
+          <span class="serve__icon">{{ icon(s.icon, 22) }}</span>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.text }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ============ WHY EDZIRA + STATS ============ #}
+<section class="section" aria-labelledby="why-title">
+  <div class="container why">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">Why Edzira</p>
+      <h2 id="why-title">Why institutions work with Edzira</h2>
+    </header>
+    <div class="why__grid" data-reveal-group>
+      {% for w in [
+        ["badge", "Led by education veterans", "Deep domain expertise and a real understanding of how institutions work."],
+        ["target", "Institutional focus", "Built exclusively for academic ecosystems and student success."],
+        ["chart", "Transformation mindset", "Focused on measurable outcomes and long-term impact, not one-off projects."],
+        ["layers", "Scalable delivery", "Flexible, secure models that fit institutions of every size."]
+      ] %}
+      <div class="why__item" data-reveal><span class="why__icon">{{ icon(w[0], 22) }}</span><h3>{{ w[1] }}</h3><p>{{ w[2] }}</p></div>
+      {% endfor %}
+    </div>
+    {# PLACEHOLDER figures from the design mockups. Replace with verified numbers before launch. #}
+    <dl class="stats{% if site.showPlaceholders %} placeholder-flag{% endif %}" data-reveal>
+      {% for st in [[100,"+","Institutions served"],[1,"M+","Learners impacted"],[500,"+","Projects delivered"],[20,"+","Years of industry experience"]] %}
+      <div class="stats__item"><dt>{{ st[2] }}</dt><dd><span data-count="{{ st[0] }}">{{ st[0] }}</span>{{ st[1] }}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>
+
+{# ============ APPROACH ============ #}
+<section class="section section--soft" aria-labelledby="approach-title">
+  <div class="container">
+    <header class="section-head section-head--split" data-reveal>
+      <div>
+        <p class="eyebrow">Our approach</p>
+        <h2 id="approach-title">A proven path from first conversation to lasting change</h2>
+      </div>
+      <a class="link-arrow" href="/approach/">See how we work {{ arrow() }}</a>
+    </header>
+    <ol class="steps" role="list" data-reveal>
+      {% for st in [
+        ["search", "Discover", "Understand your goals, challenges and learner needs."],
+        ["pen", "Design", "Shape tailored solutions and plan how systems connect."],
+        ["rocket", "Deploy", "Implement and integrate with training and ongoing support."],
+        ["bars", "Measure", "Track performance and impact with clear data."],
+        ["refresh", "Evolve", "Keep improving based on feedback and outcomes."]
+      ] %}
+      <li class="steps__item" style="--i: {{ loop.index0 }}">
+        <span class="steps__icon">{{ icon(st[0], 22) }}</span>
+        <span class="steps__num">0{{ loop.index }}</span>
+        <h3>{{ st[1] }}</h3>
+        <p>{{ st[2] }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+{# ============ PILOT TEASER ============ #}
+<section class="section" aria-labelledby="pilot-title">
+  <div class="container">
+    <div class="pilot" data-reveal>
+      <div class="pilot__media">{{ photo("pilot-training", "Faculty members in a hands-on training workshop", "(min-width: 900px) 560px, 90vw") }}</div>
+      <div class="pilot__body">
+        <p class="eyebrow">Pilot program</p>
+        <h2 id="pilot-title">Start small. <span class="text-accent">Transform at scale.</span></h2>
+        <p>Validate outcomes with a focused pilot in one department or function before rolling out across the institution.</p>
+        <ul class="pilot__models" role="list">
+          <li><strong>8 weeks</strong><span>Quick outcomes and learnings</span></li>
+          <li><strong>12 weeks</strong><span>Deeper validation and impact</span></li>
+          <li><strong>Semester</strong><span>Aligned to your academic calendar</span></li>
+        </ul>
+        <a class="btn" href="/pilot-program/">Explore the Pilot Program {{ arrow() }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============ INSIGHTS ============ #}
+<section class="section section--soft" aria-labelledby="insights-title">
+  <div class="container">
+    <header class="section-head section-head--split" data-reveal>
+      <div>
+        <p class="eyebrow">Insights</p>
+        <h2 id="insights-title">Ideas for the future of education</h2>
+      </div>
+      <a class="link-arrow" href="/insights/">View all insights {{ arrow() }}</a>
+    </header>
+    {# PLACEHOLDER articles. Real insights will come from the Insights collection. #}
+    <div class="insights" data-reveal-group>
+      {% for a in [
+        { key: "insight-learning", tag: "Digital Learning", title: "The future of digital learning in higher education", alt: "Student studying on a laptop" },
+        { key: "insight-campus", tag: "Campus", title: "Building connected campuses", alt: "Group of students on a university campus" },
+        { key: "insight-cyber", tag: "Cyber Readiness", title: "Cyber awareness in academic institutions", alt: "Abstract illustration of digital security" }
+      ] %}
+      <article class="insight" data-reveal>
+        <div class="insight__media">{{ photo(a.key, a.alt, "(min-width: 900px) 380px, 90vw") }}</div>
+        <div class="insight__body">
+          <span class="insight__tag">{{ a.tag }}</span>
+          <h3><a href="/insights/">{{ a.title }}</a></h3>
+          <span class="link-arrow">Read more {{ arrow() }}</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ============ CTA ============ #}
+<section class="section cta-wrap" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta section--dark" data-reveal>
+      <svg class="cta__arc" viewBox="0 0 400 400" aria-hidden="true"><path d="M280 380C110 400 10 300 20 190 30 80 150 10 330 30" fill="none" stroke="#22D3EE" stroke-opacity=".35" stroke-width="2"/><circle cx="336" cy="31" r="5" fill="#22D3EE"/></svg>
+      <div>
+        <h2 id="cta-title">Ready to transform your institution?</h2>
+        <p>Tell us where you are today. We'll help you map the next step, whether that's a focused pilot or a campus-wide programme.</p>
+      </div>
+      <a class="btn" href="{{ site.cta.href }}">{{ site.cta.label }} {{ arrow() }}</a>
+    </div>
+  </div>
+</section>

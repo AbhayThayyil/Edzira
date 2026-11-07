@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+bodyClass: has-dark-hero
+title: About Us
+seoTitle: "About Us: Academic Digital Transformation Partner"
+description: Edzira is an academic digital transformation company helping higher education institutions reimagine learning, modernise operations and build future-ready outcomes.
+breadcrumbs:
+  - { title: Home, href: / }
+  - { title: About, href: /about/ }
+---
+{% from "partials/icons.njk" import arrow, icon, pin %}
+{% from "partials/photo.njk" import photo with context %}
+{% from "partials/page.njk" import pageHero, ctaBand with context %}
+
+{{ pageHero("About Edzira", "Transforming Institutions.", "Enabling Futures.", "Edzira is an academic digital transformation company that partners with higher education institutions to reimagine learning, modernise operations and create future-ready outcomes for students and communities.", "serve-universities", "Students walking across a university campus") }}
+
+<section class="section" aria-labelledby="mission-title">
+  <div class="container split">
+    <div class="split__media" data-reveal>{{ photo("serve-colleges", "Students collaborating on laptops", "(min-width: 900px) 600px, 90vw") }}</div>
+    <div data-reveal>
+      <p class="eyebrow">Who we are</p>
+      <h2 id="mission-title">Building future-ready academic ecosystems</h2>
+      <p>Edzira partners with educational institutions to accelerate digital learning adoption, strengthen student outcomes and enable scalable learning through integrated platforms, content and services.</p>
+      <div class="grid grid--2" style="margin-top:var(--sp-5)">
+        <div class="card card--soft"><span class="card__icon">{{ icon("rocket", 22) }}</span><h3>Our mission</h3><p>Enable institutions to deliver future-ready education through innovative learning ecosystems.</p></div>
+        <div class="card card--soft"><span class="card__icon">{{ icon("target", 22) }}</span><h3>Our vision</h3><p>To be the trusted partner in academic digital transformation and lifelong learning.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" aria-labelledby="stats-title">
+  <div class="container">
+    <h2 id="stats-title" class="visually-hidden">Edzira in numbers</h2>
+    {# PLACEHOLDER figures. Replace with verified numbers before launch. #}
+    <dl class="stats{% if site.showPlaceholders %} placeholder-flag{% endif %}" style="margin:0;background:#fff" data-reveal>
+      {% for st in [[100,"+","Institutions served"],[1,"M+","Learners impacted"],[500,"+","Projects delivered"],[20,"+","Years of industry experience"]] %}
+      <div class="stats__item"><dt>{{ st[2] }}</dt><dd><span data-count="{{ st[0] }}">{{ st[0] }}</span>{{ st[1] }}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="values-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">Why partner with us</p><h2 id="values-title">Why institutions partner with Edzira</h2></header>
+    <div class="grid" data-reveal-group>
+      {% for v in [["badge","Deep domain expertise","Decades of collective experience in higher education and education technology."],["landmark","Institution-first approach","We listen, understand and design solutions that fit your context."],["layers","End-to-end partnership","From strategy to implementation and beyond, always with you."],["shield","Secure & compliant","Security, privacy and compliance built into everything we do."],["chart","Outcome-driven","We focus on measurable impact that advances your mission."],["users","People who care","A committed team invested in your success."]] %}
+      <div class="card card--soft" data-reveal><span class="card__icon">{{ icon(v[0], 22) }}</span><h3>{{ v[1] }}</h3><p>{{ v[2] }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" aria-labelledby="presence-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">Where we are</p><h2 id="presence-title">Offices across India</h2></header>
+    <div class="grid" data-reveal-group>
+      {% for o in site.offices %}
+      <div class="card" data-reveal>
+        <span class="card__icon">{{ icon("landmark", 22) }}</span>
+        <h3>{{ o.city }}</h3>
+        <span class="insight__tag" style="margin:0">{{ o.label }}</span>
+        <address style="font-style:normal;font-size:var(--fs-sm)">{{ site.legalName }}<br>{{ o.street }}<br>{{ o.city }} {{ o.postalCode }}, {{ o.region }}, India</address>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ ctaBand() }}

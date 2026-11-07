@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+bodyClass: has-dark-hero
+title: Contact Us
+seoTitle: Contact Edzira, Book a Consultation
+description: Talk to Edzira about digital learning, academic systems, cyber readiness or a pilot programme. Book a consultation with our team in Bangalore, Calicut or Pune.
+breadcrumbs:
+  - { title: Home, href: / }
+  - { title: Contact, href: /contact/ }
+schemaExtra:
+  "@type": ContactPage
+  name: Contact Edzira
+---
+{% from "partials/icons.njk" import arrow, icon, mail, phone %}
+{% from "partials/page.njk" import pageHero with context %}
+
+{{ pageHero("Contact Edzira", "Let's build a", "future-ready institution.", "Whether you're exploring digital transformation, modernising systems or strengthening student outcomes, we're here to help you take the next step.", "hero-campus", "University campus building") }}
+
+<section class="section">
+  <div class="container contact">
+    <form class="form" action="{{ site.formAction }}" method="POST" data-form>
+      <h2 style="font-size:var(--fs-xl)">Book a consultation</h2>
+      <p class="form__note" style="margin-bottom:var(--sp-5)">Tell us a little about your institution. We usually reply within one working day.</p>
+      <div class="form__grid">
+        <div class="field"><label for="f-name">Full name</label><input type="text" id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field form__full"><label for="f-org">Institution / organisation</label><input type="text" id="f-org" name="institution" autocomplete="organization" required></div>
+        <div class="field"><label for="f-role">Designation <span class="opt">(optional)</span></label><input type="text" id="f-role" name="designation" autocomplete="organization-title"></div>
+        <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <fieldset class="field form__full choice">
+          <legend>Area of interest <span class="opt">(optional)</span></legend>
+          <div class="choice__grid">
+            {% for s in solutions %}<label class="choice__item"><input type="radio" name="interest" value="{{ s.slug }}"><span>{{ icon(s.icon, 18) | safe }}{{ s.title }}</span></label>
+            {% endfor %}<label class="choice__item"><input type="radio" name="interest" value="pilot"><span>{{ icon("rocket", 18) | safe }}Pilot Program</span></label>
+            <label class="choice__item"><input type="radio" name="interest" value="other"><span>{{ icon("spark", 18) | safe }}Something else</span></label>
+          </div>
+        </fieldset>
+        <div class="field form__full"><label for="f-msg">How can we help?</label><textarea id="f-msg" name="message" required></textarea></div>
+        <label class="form__hp" aria-hidden="true">Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <div class="form__foot">
+        <button class="btn" type="submit">Send message {{ arrow() }}</button>
+        <p class="form__note">We respect your privacy. See our <a href="/privacy/">privacy policy</a>.</p>
+      </div>
+      <p class="form__status" role="status" aria-live="polite" hidden></p>
+    </form>
+
+    <div>
+      <h2 style="font-size:var(--fs-xl)">Reach out to us</h2>
+      <div class="offices">
+        {% for o in site.offices %}
+        <div class="office"><span class="card__icon">{{ icon("landmark", 20) }}</span><div><h3>{{ o.label }}, {{ o.city }}</h3><address>{{ site.legalName }}<br>{{ o.street }}, {{ o.city }} {{ o.postalCode }}</address></div></div>
+        {% endfor %}
+        <div class="office"><span class="card__icon">{{ mail() }}</span><div><h3>Email</h3><p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p></div></div>
+        <div class="office"><span class="card__icon">{{ phone() }}</span><div><h3>Call</h3><p><a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone | replace(" ", "&nbsp;") | safe }}</a></p></div></div>
+      </div>
+    </div>
+  </div>
+</section>

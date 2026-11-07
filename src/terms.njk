@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+title: Terms of Use
+description: Terms governing the use of the Edzira website.
+breadcrumbs:
+  - { title: Home, href: / }
+  - { title: Terms of Use, href: /terms/ }
+---
+<section class="page-hero section--dark" style="padding-bottom:var(--sp-7)"><div class="container page-hero__inner"><p class="eyebrow">Legal</p><h1 id="page-title">Terms of Use</h1></div></section>
+<section class="section"><div class="container">
+  <p class="notice"><strong>Template.</strong> This is a starting draft, not legal advice. Have it reviewed before launch.</p>
+  <div class="prose">
+    <p>By using this website you agree to these terms. If you do not agree, please do not use the site.</p>
+    <h2>Use of content</h2>
+    <p>All content on this website, including text, graphics and logos, belongs to {{ site.legalName }} or its licensors. You may view and share it for personal, non-commercial purposes with attribution.</p>
+    <h2>No warranty</h2>
+    <p>Information on this website is provided for general purposes and may change without notice. It does not form an offer or contract.</p>
+    <h2>Links to other sites</h2>
+    <p>We are not responsible for the content of external websites linked from this site.</p>
+    <h2>Governing law</h2>
+    <p>These terms are governed by the laws of India.</p>
+    <h2>Contact</h2>
+    <p>Questions can be sent to <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+    <p><em>Last updated: {{ build.date | readableDate }}</em></p>
+  </div>
+</div></section>

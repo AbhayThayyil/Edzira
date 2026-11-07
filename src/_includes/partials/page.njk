@@ -1,0 +1,50 @@
+{#- Shared inner-page building blocks. Import with:
+    {% from "partials/page.njk" import pageHero, ctaBand, faqList with context %} -#}
+{% from "partials/icons.njk" import arrow, icon %}
+{% from "partials/photo.njk" import photo with context %}
+
+{%- macro pageHero(eyebrow, title, accent, lead, photoKey="", photoAlt="", primary=null, secondary=null) -%}
+<section class="page-hero section--dark{% if photoKey %} page-hero--photo{% endif %}" aria-labelledby="page-title">
+  {% if photoKey %}<div class="page-hero__bg">{{ photo(photoKey, photoAlt, "(min-width: 1020px) 50vw, 100vw", true) }}</div>{% endif %}
+  <svg class="page-hero__arc" viewBox="0 0 600 600" aria-hidden="true"><path class="orbit-arc is-drawn" pathLength="1" d="M420 570C170 600 20 450 40 280 60 110 230 20 470 40" fill="none" stroke="#22D3EE" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/><circle cx="478" cy="41" r="6" fill="#22D3EE"/></svg>
+  <div class="container page-hero__inner">
+    {% if breadcrumbs %}
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><ol>
+      {% for b in breadcrumbs %}<li>{% if loop.last %}<span aria-current="page">{{ b.title }}</span>{% else %}<a href="{{ b.href }}">{{ b.title }}</a>{% endif %}</li>{% endfor %}
+    </ol></nav>
+    {% endif %}
+    <p class="eyebrow" data-reveal>{{ eyebrow }}</p>
+    <h1 id="page-title" data-reveal>{{ title }}{% if accent %} <span class="text-accent">{{ accent }}</span>{% endif %}</h1>
+    {% if lead %}<p class="lead" data-reveal>{{ lead }}</p>{% endif %}
+    {% if primary or secondary %}
+    <div class="btn-row" data-reveal>
+      {% if primary %}<a class="btn" href="{{ primary.href }}">{{ primary.label }} {{ arrow() }}</a>{% endif %}
+      {% if secondary %}<a class="btn btn--ghost" href="{{ secondary.href }}">{{ secondary.label }} {{ arrow() }}</a>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{%- endmacro -%}
+
+{%- macro ctaBand(title="Ready to transform your institution?", text="Tell us where you are today. We'll help you map the next step, whether that's a focused pilot or a campus-wide programme.", label=null, href=null) -%}
+<section class="section cta-wrap" aria-label="Get in touch">
+  <div class="container">
+    <div class="cta section--dark" data-reveal>
+      <svg class="cta__arc" viewBox="0 0 400 400" aria-hidden="true"><path d="M280 380C110 400 10 300 20 190 30 80 150 10 330 30" fill="none" stroke="#22D3EE" stroke-opacity=".35" stroke-width="2"/><circle cx="336" cy="31" r="5" fill="#22D3EE"/></svg>
+      <div><h2>{{ title }}</h2><p>{{ text }}</p></div>
+      <a class="btn" href="{{ href or site.cta.href }}">{{ label or site.cta.label }} {{ arrow() }}</a>
+    </div>
+  </div>
+</section>
+{%- endmacro -%}
+
+{%- macro faqList(faqs) -%}
+<div class="faq" data-reveal-group>
+  {% for f in faqs %}
+  <details class="faq__item" data-reveal{% if loop.first %} open{% endif %}>
+    <summary>{{ f.q }}<span class="faq__icon" aria-hidden="true"></span></summary>
+    <p>{{ f.a }}</p>
+  </details>
+  {% endfor %}
+</div>
+{%- endmacro -%}

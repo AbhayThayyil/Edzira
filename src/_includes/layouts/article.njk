@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+---
+{% from "partials/icons.njk" import arrow %}
+{% from "partials/photo.njk" import photo with context %}
+{% from "partials/page.njk" import ctaBand with context %}
+<article>
+  <header class="page-hero section--dark" style="padding-bottom:calc(var(--sp-8) * 2)">
+    <div class="container page-hero__inner" style="max-width:820px">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol>{% for b in breadcrumbs %}<li>{% if loop.last %}<span aria-current="page">{{ b.title | truncate(40) }}</span>{% else %}<a href="{{ b.href }}">{{ b.title }}</a>{% endif %}</li>{% endfor %}</ol></nav>
+      <p class="eyebrow">{{ tag }}</p>
+      <h1 id="page-title" style="max-width:none">{{ title }}</h1>
+      <p class="lead">{{ description }}</p>
+      <div class="article-meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time><span>{{ readMins }} min read</span><span>By the {{ site.name }} team</span></div>
+    </div>
+  </header>
+  {% if image %}<div class="container"><div class="article-cover">{{ photo(image, imageAlt, "(min-width: 1000px) 960px, 92vw", true) }}</div></div>{% endif %}
+  <div class="container" style="padding-bottom:var(--sp-section)">
+    {% if placeholder and site.showPlaceholders %}<p class="notice"><strong>Placeholder article.</strong> Hidden from search engines until <code>placeholder: false</code> is set in this file.</p>{% endif %}
+    <div class="prose">{{ content | safe }}</div>
+    <p class="prose" style="margin-top:var(--sp-7)"><a class="link-arrow" href="/insights/">All insights {{ arrow() }}</a></p>
+  </div>
+</article>
+{{ ctaBand() }}

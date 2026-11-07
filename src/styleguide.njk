@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+title: Style guide
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{% from "partials/icons.njk" import arrow %}
+<section class="section">
+  <div class="container sg">
+    <p class="eyebrow">Internal · not indexed</p>
+    <h1>Edzira design foundation</h1>
+    <p class="lead">Colours, type, buttons and logo used across the site. Edit <code>src/assets/css/tokens.css</code> to change them everywhere.</p>
+
+    <h2>Logo</h2>
+    <div class="sg-grid sg-grid--2">
+      <div class="sg-card" style="background:var(--logo-bg)"><img src="/assets/img/edzira-logo-960.webp" alt="Edzira logo" width="1147" height="663" style="max-width:420px;margin-inline:auto"></div>
+    </div>
+    <p>The original artwork, used exactly as supplied. It is light artwork designed for dark backgrounds, so it always sits on navy (<code>--logo-bg</code>).</p>
+
+    <h2>Colour</h2>
+    <div class="sg-grid">
+      {% for c in [["Logo navy","--logo-bg","Header, footer, behind the logo"],["Navy 950","--navy-950","Darkest surfaces"],["Navy 900","--navy-900","Dark sections, headings"],["Navy 800","--navy-800","Cards on dark"],["Teal 600","--teal-600","Buttons and links"],["Teal 700","--teal-700","Hover"],["Teal 50","--teal-50","Tints"],["Cyan 400","--cyan-400","Glow accent on dark only"],["Blue 600","--blue-600","Orbit gradient end"],["Ink","--ink","Headings on light"],["Text","--text","Body copy"],["Line","--line","Borders"],["Soft","--bg-soft","Alternate sections"]] %}
+      <div class="sg-swatch"><span style="background:var({{ c[1] }})"></span><strong>{{ c[0] }}</strong><code>{{ c[1] }}</code><small>{{ c[2] }}</small></div>
+      {% endfor %}
+    </div>
+
+    <h2>Type</h2>
+    <p class="sg-type" style="font-size:var(--fs-3xl);color:var(--ink);font-weight:700;letter-spacing:-.02em;line-height:1.1">Empowering Institutions.</p>
+    <p class="sg-type" style="font-size:var(--fs-2xl);color:var(--ink);font-weight:700">A connected academic ecosystem</p>
+    <p class="sg-type" style="font-size:var(--fs-xl);color:var(--ink);font-weight:700">Digital Learning</p>
+    <p class="lead">Lead paragraph. Plus Jakarta Sans, a modern geometric sans that pairs with the logo's open letterforms.</p>
+    <p>Body copy at 16 to 18px with a 1.65 line height, so longer reading on solution and article pages stays comfortable.</p>
+
+    <h2>Buttons</h2>
+    <div class="btn-row"><a class="btn" href="#">{{ site.cta.label }} {{ arrow() }}</a><a class="btn btn--ghost" href="#">Explore Solutions {{ arrow() }}</a><a class="link-arrow" href="#">Learn more {{ arrow() }}</a></div>
+    <div class="sg-card sg-card--dark on-dark" style="margin-top:var(--sp-5)"><div class="btn-row"><a class="btn" href="#">{{ site.cta.label }} {{ arrow() }}</a><a class="btn btn--ghost" href="#">Explore Solutions {{ arrow() }}</a></div></div>
+
+    <h2>Motion</h2>
+    <div class="sg-grid" data-reveal-group>
+      {% for n in ["Reveal on scroll","Staggered by 90ms","Respects reduced motion","Eased with ease-out"] %}<div class="sg-card" data-reveal>{{ n }}</div>{% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+  .sg h2 { margin-top: var(--sp-8); }
+  .sg-grid { display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .sg-grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .sg-card { padding: var(--sp-6); border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow-sm); }
+  .sg-card .logo { max-height: 160px; margin-inline: auto; }
+  .sg-card--dark { background: var(--gradient-dark); border-color: transparent; }
+  .sg-swatch { display: grid; gap: 2px; font-size: var(--fs-sm); }
+  .sg-swatch span { height: 72px; border-radius: var(--radius-sm); border: 1px solid var(--line); margin-bottom: var(--sp-2); }
+  .sg-swatch strong { color: var(--ink); } .sg-swatch small { color: var(--muted); }
+  .sg-type { margin-bottom: var(--sp-3); }
+</style>

@@ -1,0 +1,91 @@
+---
+layout: layouts/base.njk
+bodyClass: has-dark-hero
+title: Solutions
+seoTitle: Digital Transformation Solutions for Institutions
+description: Digital learning, academic systems, institutional transformation, cyber readiness and training solutions for universities, colleges and public bodies.
+breadcrumbs:
+  - { title: Home, href: / }
+  - { title: Solutions, href: /solutions/ }
+---
+{% from "partials/icons.njk" import arrow, icon %}
+{% from "partials/page.njk" import pageHero, ctaBand with context %}
+
+{{ pageHero("Our solutions", "Digital transformation for", "future-ready institutions.", "An integrated suite of solutions that modernises learning, streamlines operations, strengthens security and drives measurable outcomes across your institution.", "hero-campus", "Modern university campus building", site.cta, { label: "Explore Our Approach", href: "/approach/" }) }}
+
+<section class="section" aria-labelledby="challenges-title">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">The challenge</p>
+      <h2 id="challenges-title">What institutions are up against today</h2>
+      <p class="lead">Most institutions are held back by disconnected systems, manual processes and limited visibility, while expectations keep rising.</p>
+    </header>
+    <div class="grid grid--5" data-reveal-group>
+      {% for c in [["systems","Siloed systems","Disconnected tools create data silos and duplicate work."],["pen","Manual processes","Time-consuming workflows slow staff down and invite errors."],["search","Limited visibility","Without real-time insight, decisions rely on guesswork."],["shield","Rising risks","Cyber threats and compliance demands keep growing."],["users","Student expectations","Students expect seamless, digital-first experiences."]] %}
+      <div class="card card--soft" data-reveal><span class="card__icon">{{ icon(c[0], 22) }}</span><h3>{{ c[1] }}</h3><p>{{ c[2] }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" aria-labelledby="suite-title">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">The suite</p>
+      <h2 id="suite-title">A complete suite for academic transformation</h2>
+    </header>
+    <div class="grid" data-reveal-group>
+      {% for s in solutions %}
+      <a class="card" href="/solutions/{{ s.slug }}/" data-reveal>
+        <span class="card__icon">{{ icon(s.icon, 22) }}</span>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.tagline }}</p>
+        <ul class="ticks">{% for c in s.capabilities %}<li>{{ c.title }}</li>{% endfor %}</ul>
+        <span class="link-arrow">Learn more {{ arrow() }}</span>
+      </a>
+      {% endfor %}
+      <div class="card section--dark" data-reveal style="background:var(--gradient-dark);border-color:transparent">
+        <span class="card__icon" style="background:rgb(34 211 238 / .12);color:var(--cyan-400)">{{ icon("calendar", 22) }}</span>
+        <h3>Not sure where to start?</h3>
+        <p style="color:#c8d3ea">A focused pilot proves value in one area before you scale.</p>
+        <a class="link-arrow" style="color:var(--cyan-400)" href="/pilot-program/">See the Pilot Program {{ arrow() }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section ecosystem-wrap" style="padding-top:var(--sp-section)" aria-labelledby="eco-title">
+  <div class="container">
+    <div class="ecosystem section--dark" data-reveal>
+      <div class="ecosystem__copy">
+        <p class="eyebrow">Integrated ecosystem</p>
+        <h2 id="eco-title">All the pieces. <span class="text-accent">Working together.</span></h2>
+        <p>Each solution works on its own, but the real gains come when learning, systems, security, people and data are connected.</p>
+      </div>
+      <div class="eco" data-reveal-group>
+        <ol class="eco__nodes" role="list">
+          {% for n in [["book","Learning"],["systems","Student Systems"],["shield","Cyber Readiness"],["users","Enablement"],["chart","Analytics"]] %}
+          <li class="eco__node" data-reveal="scale"><span class="eco__ring">{{ icon(n[0], 26) }}</span><span>{{ n[1] }}</span></li>
+          {% endfor %}
+        </ol>
+        <svg class="eco__lines" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+          {% for x in [100, 300, 500, 700, 900] %}<path class="orbit-arc" pathLength="1" d="M{{ x }} 0 C{{ x }} 70 500 40 500 112" fill="none" stroke="#22D3EE" stroke-opacity=".55" stroke-width="2" vector-effect="non-scaling-stroke"/>{% endfor %}
+        </svg>
+        <div class="eco__result" data-reveal="scale">{{ icon("landmark", 22) }} Institution Transformation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="outcomes-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">Outcomes</p><h2 id="outcomes-title">Outcomes that matter</h2></header>
+    <div class="grid grid--5" data-reveal-group>
+      {% for o in [["chart","Improved learning outcomes"],["users","Better student success"],["refresh","Operational efficiency"],["shield","Stronger digital resilience"],["landmark","A future-ready institution"]] %}
+      <div class="card card--soft" data-reveal><span class="card__icon">{{ icon(o[0], 22) }}</span><h3>{{ o[1] }}</h3></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ ctaBand() }}

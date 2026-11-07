@@ -1,0 +1,103 @@
+---js
+{
+  layout: "layouts/base.njk",
+  bodyClass: "has-dark-hero",
+  pagination: { data: "solutions", size: 1, alias: "s" },
+  permalink: (data) => `/solutions/${data.s.slug}/`,
+  eleventyComputed: {
+    title: (data) => data.s.title,
+    seoTitle: (data) => data.s.seoTitle,
+    description: (data) => data.s.description,
+    faqs: (data) => data.s.faqs,
+    breadcrumbs: (data) => [
+      { title: "Home", href: "/" },
+      { title: "Solutions", href: "/solutions/" },
+      { title: data.s.title, href: `/solutions/${data.s.slug}/` },
+    ],
+    schemaExtra: (data) => ({
+      "@type": "Service",
+      name: data.s.title,
+      description: data.s.description,
+      serviceType: data.s.title,
+      areaServed: { "@type": "Country", name: "India" },
+      audience: { "@type": "EducationalAudience", educationalRole: "institution" },
+      provider: { "@id": new URL("/", data.site.url).href + "#organization" },
+    }),
+  },
+}
+---
+{% from "partials/icons.njk" import arrow, icon %}
+{% from "partials/photo.njk" import photo with context %}
+{% from "partials/page.njk" import pageHero, ctaBand, faqList with context %}
+
+{{ pageHero("Solutions", s.title ~ ".", "", s.tagline, s.photo, s.photoAlt, site.cta, { label: "Explore the Pilot Program", href: "/pilot-program/" }) }}
+
+<section class="section">
+  <div class="container split">
+    <div class="split__media" data-reveal>{{ photo(s.photo, s.photoAlt, "(min-width: 900px) 600px, 90vw") }}</div>
+    <div data-reveal>
+      <p class="eyebrow">Overview</p>
+      <h2>What {{ s.title | lower }} looks like with Edzira</h2>
+      <p class="lead">{{ s.intro }}</p>
+      <h3 style="font-size:var(--fs-base);margin-top:var(--sp-5)">What changes for your institution</h3>
+      <ul class="ticks">{% for o in s.outcomes %}<li>{{ o }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" aria-labelledby="cap-title">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">Capabilities</p>
+      <h2 id="cap-title">What's included</h2>
+    </header>
+    <div class="grid{% if s.capabilities.length == 4 %} grid--2{% endif %}" data-reveal-group>
+      {% for c in s.capabilities %}
+      <div class="card" data-reveal>
+        <span class="card__icon">{{ icon(s.icon, 22) }}</span>
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="how-title">
+  <div class="container">
+    <header class="section-head section-head--split" data-reveal>
+      <div><p class="eyebrow">How we deliver</p><h2 id="how-title">The same proven 5-step approach</h2></div>
+      <a class="link-arrow" href="/approach/">Our approach in detail {{ arrow() }}</a>
+    </header>
+    <ol class="steps" role="list" data-reveal>
+      {% for st in [["search","Discover","Understand goals, challenges and needs."],["pen","Design","Shape a tailored plan."],["rocket","Deploy","Implement with training and support."],["bars","Measure","Track impact with clear data."],["refresh","Evolve","Keep improving."]] %}
+      <li class="steps__item" style="--i: {{ loop.index0 }}"><span class="steps__icon">{{ icon(st[0], 22) }}</span><span class="steps__num">0{{ loop.index }}</span><h3>{{ st[1] }}</h3><p>{{ st[2] }}</p></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section section--soft" aria-labelledby="faq-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">FAQ</p><h2 id="faq-title">Common questions about {{ s.title | lower }}</h2></header>
+    {{ faqList(s.faqs) }}
+  </div>
+</section>
+
+<section class="section" aria-labelledby="related-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">Connected solutions</p><h2 id="related-title">Works even better together</h2></header>
+    <div class="grid grid--4" data-reveal-group>
+      {% for r in solutions %}{% if r.slug != s.slug %}
+      <a class="card" href="/solutions/{{ r.slug }}/" data-reveal>
+        <span class="card__icon">{{ icon(r.icon, 22) }}</span>
+        <h3>{{ r.title }}</h3>
+        <p>{{ r.tagline }}</p>
+        <span class="link-arrow">Learn more {{ arrow() }}</span>
+      </a>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ ctaBand("Talk to us about " ~ (s.title | lower)) }}

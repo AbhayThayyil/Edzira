@@ -1,0 +1,64 @@
+{%- set pageTitle = (site.name ~ " | Academic Digital Transformation") if isHome else ((seoTitle or title) ~ " | " ~ site.name) -%}
+{%- set pageDesc = description or site.description -%}
+{%- set canonical = (canonicalPath or page.url) | absoluteUrl(site.url) -%}
+{%- set ogImg = (ogImage or site.ogImage) | absoluteUrl(site.url) -%}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDesc }}">
+<link rel="canonical" href="{{ canonical }}">
+{% if noindex %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ pageDesc }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ ogImg }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ pageTitle }}">
+<meta name="twitter:description" content="{{ pageDesc }}">
+<meta name="twitter:image" content="{{ ogImg }}">
+{#- Organization + WebSite structured data on every page; pages can add more via the `schema` block. -#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ '/' | absoluteUrl(site.url) }}#organization",
+      "name": "{{ site.name }}",
+      "legalName": "{{ site.legalName }}",
+      "url": "{{ '/' | absoluteUrl(site.url) }}",
+      "logo": "{{ '/assets/img/edzira-logo-480.png' | absoluteUrl(site.url) }}",
+      "slogan": "{{ site.tagline }}",
+      "email": "{{ site.email }}",
+      "telephone": "{{ site.phone }}",
+      "address": [{% for o in site.offices %}
+        { "@type": "PostalAddress", "streetAddress": {{ o.street | json | safe }}, "addressLocality": "{{ o.city }}", "addressRegion": "{{ o.region }}", "postalCode": "{{ o.postalCode }}", "addressCountry": "IN" }{% if not loop.last %},{% endif %}{% endfor %}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ '/' | absoluteUrl(site.url) }}#website",
+      "url": "{{ '/' | absoluteUrl(site.url) }}",
+      "name": "{{ site.name }}",
+      "inLanguage": "{{ site.language }}",
+      "publisher": { "@id": "{{ '/' | absoluteUrl(site.url) }}#organization" }
+    }{% if breadcrumbs %},
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [{% for b in breadcrumbs %}
+        { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ b.title | json | safe }}, "item": "{{ b.href | absoluteUrl(site.url) }}" }{% if not loop.last %},{% endif %}{% endfor %}
+      ]
+    }{% endif %}{% if faqs %},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [{% for f in faqs %}
+        { "@type": "Question", "name": {{ f.q | json | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | json | safe }} } }{% if not loop.last %},{% endif %}{% endfor %}
+      ]
+    }{% endif %}{% if schemaExtra %},
+    {{ schemaExtra | json | safe }}{% endif %}
+  ]
+}
+</script>

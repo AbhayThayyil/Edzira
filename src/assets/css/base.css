@@ -1,0 +1,44 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg, video { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, h4 { color: var(--ink); line-height: var(--lh-tight); letter-spacing: -0.02em; margin: 0 0 var(--sp-4); font-weight: 700; }
+h1 { font-size: var(--fs-3xl); }
+h2 { font-size: var(--fs-2xl); }
+h3 { font-size: var(--fs-xl); line-height: var(--lh-snug); }
+p { margin: 0 0 var(--sp-4); }
+a { color: var(--color-action); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--color-action-hover); }
+:focus-visible { outline: 3px solid var(--cyan-400); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--teal-100); color: var(--ink); }
+
+.container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
+.section { padding-block: var(--sp-section); }
+.section--soft { background: var(--bg-soft); }
+.section--dark { background: var(--gradient-dark); color: #c8d3ea; }
+.section--dark :is(h1, h2, h3, h4) { color: #fff; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-action); margin-bottom: var(--sp-4);
+}
+.section--dark .eyebrow { color: var(--cyan-400); }
+.lead { font-size: var(--fs-lg); max-width: 60ch; }
+.text-accent { color: var(--teal-600); }
+.section--dark .text-accent { background: var(--gradient-orbit); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.skip-link { position: absolute; left: var(--sp-4); top: -100px; z-index: 100; background: var(--navy-900); color: #fff; padding: var(--sp-2) var(--sp-4); border-radius: var(--radius-sm); }
+.skip-link:focus { top: var(--sp-4); color: #fff; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Marks content that must be replaced with verified facts before launch. */
+.placeholder-flag { outline: 2px dashed #f59e0b; outline-offset: 4px; }

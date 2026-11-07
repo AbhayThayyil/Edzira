@@ -1,0 +1,40 @@
+{% from "partials/icons.njk" import pin, mail, phone, linkedin, xlogo, youtube %}
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <picture>
+        <source type="image/webp" srcset="/assets/img/edzira-logo-480.webp 480w" sizes="200px">
+        <img src="/assets/img/edzira-logo-480.png" alt="Edzira: Transforming Institutions. Enabling Futures." width="1147" height="663" loading="lazy" decoding="async">
+      </picture>
+      <p>Academic digital transformation and learning ecosystems for universities, colleges and public institutions.</p>
+      <div class="social">
+        <a href="{{ site.social.linkedin }}" aria-label="Edzira on LinkedIn">{{ linkedin() }}</a>
+        <a href="{{ site.social.x }}" aria-label="Edzira on X">{{ xlogo() }}</a>
+        <a href="{{ site.social.youtube }}" aria-label="Edzira on YouTube">{{ youtube() }}</a>
+      </div>
+    </div>
+    <nav aria-labelledby="f-solutions">
+      <h2 id="f-solutions">Solutions</h2>
+      <ul>{% for s in nav.solutions %}<li><a href="{{ s.href }}">{{ s.title }}</a></li>{% endfor %}</ul>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <h2 id="f-company">Company</h2>
+      <ul>{% for item in nav.main %}<li><a href="{{ item.href }}">{{ item.title }}</a></li>{% endfor %}</ul>
+    </nav>
+    <div>
+      <h2>Locations</h2>
+      <ul>{% for o in site.offices %}<li class="site-footer__office">{{ pin() }}<span>{{ o.city }}</span></li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h2>Connect</h2>
+      <ul>
+        <li class="site-footer__office">{{ mail() }}<a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li class="site-footer__office">{{ phone() }}<a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone | replace(" ", "&nbsp;") | safe }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>&copy; {{ build.year }} {{ site.legalName }}. All rights reserved.</p>
+    <ul>{% for l in nav.legal %}<li><a href="{{ l.href }}">{{ l.title }}</a></li>{% endfor %}</ul>
+  </div>
+</footer>

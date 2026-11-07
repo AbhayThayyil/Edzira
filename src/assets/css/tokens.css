@@ -1,0 +1,89 @@
+/* Edzira design tokens.
+   Teal is the action colour (buttons, links): it passes WCAG AA with white text.
+   Cyan comes from the logo and is used only as glow / accent on dark surfaces. */
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand */
+  --logo-bg: #000c1a; /* exact background of the supplied logo artwork */
+  --navy-950: #050d1f;
+  --navy-900: #0a1a3a;
+  --navy-800: #11264d;
+  --navy-700: #1b3566;
+  --teal-700: #0a666b;
+  --teal-600: #0b7a80;
+  --teal-500: #0e9199;
+  --teal-100: #d9f2f3;
+  --teal-50: #eef9fa;
+  --cyan-400: #22d3ee;
+  --cyan-300: #7df3ff;
+  --blue-600: #2563eb;
+
+  /* Neutrals */
+  --ink: #0b1530;
+  --text: #3d4a66;
+  --muted: #5b6680;
+  --line: #e3e9f1;
+  --bg: #ffffff;
+  --bg-soft: #f5f8fc;
+  --surface: #ffffff;
+
+  /* Semantic */
+  --color-action: var(--teal-600);
+  --color-action-hover: var(--teal-700);
+  --color-accent: var(--cyan-400);
+  --gradient-orbit: linear-gradient(180deg, var(--cyan-300), var(--cyan-400) 45%, var(--blue-600));
+  --gradient-dark: radial-gradient(1200px 600px at 80% -10%, #12306a 0%, transparent 60%),
+    radial-gradient(800px 500px at 0% 110%, #0b3a4f 0%, transparent 60%), var(--navy-950);
+
+  /* Type: fluid scale, 16px base growing to 18px */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-sm: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --fs-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --fs-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --fs-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --fs-2xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.625rem);
+  --fs-3xl: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+  --lh-tight: 1.1;
+  --lh-snug: 1.3;
+  --lh-body: 1.65;
+
+  /* Space (8px rhythm) */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-section: clamp(4rem, 3rem + 5vw, 8rem);
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --container: 1200px;
+
+  /* Shape and depth */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgb(11 21 48 / 0.06);
+  --shadow: 0 8px 24px -8px rgb(11 21 48 / 0.12), 0 2px 6px rgb(11 21 48 / 0.04);
+  --shadow-lg: 0 24px 48px -16px rgb(11 21 48 / 0.22);
+  --glow: 0 0 0 1px rgb(34 211 238 / 0.35), 0 0 24px rgb(34 211 238 / 0.35);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur: 320ms;
+  --dur-slow: 700ms;
+
+  --header-h: 88px;
+}

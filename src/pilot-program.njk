@@ -1,0 +1,84 @@
+---
+layout: layouts/base.njk
+bodyClass: has-dark-hero
+title: Pilot Program
+seoTitle: Pilot Program for Academic Digital Transformation
+description: Start small, transform at scale. Edzira pilot programmes prove digital learning, academic systems and cyber readiness outcomes in 8 weeks, 12 weeks or a semester.
+ctaLabel: Request a Pilot
+ctaHref: /contact/?interest=pilot
+breadcrumbs:
+  - { title: Home, href: / }
+  - { title: Pilot Program, href: /pilot-program/ }
+---
+{% from "partials/icons.njk" import arrow, icon %}
+{% from "partials/photo.njk" import photo with context %}
+{% from "partials/page.njk" import pageHero, ctaBand with context %}
+{% set pilotCta = { label: "Request a Pilot", href: "/contact/?interest=pilot" } %}
+
+{{ pageHero("Pilot program", "Start small.", "Transform at scale.", "Launch a focused initiative that proves outcomes in one department or function before you commit to a broader transformation.", "pilot-training", "Faculty training session", pilotCta, { label: "Talk to an Expert", href: "/contact/" }) }}
+
+<section class="section" aria-labelledby="why-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">Why pilot first?</p><h2 id="why-title">Lower risk, faster buy-in</h2></header>
+    <div class="grid grid--4" data-reveal-group>
+      {% for w in [["shield","Lower risk","Validate solutions and outcomes with minimal disruption and investment."],["rocket","Faster adoption","Build confidence and show value early to win stakeholder support."],["chart","Measurable outcomes","Agree clear metrics up front, so impact is visible from day one."],["users","Institutional buy-in","Secure leadership support with evidence-backed results."]] %}
+      <div class="card card--soft" data-reveal><span class="card__icon">{{ icon(w[0], 22) }}</span><h3>{{ w[1] }}</h3><p>{{ w[2] }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" aria-labelledby="models-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">Pilot models</p><h2 id="models-title">Choose where to start</h2></header>
+    <div class="grid grid--4" data-reveal-group>
+      {% for m in [["book","Digital Learning Pilot","Selected departments","Enhance teaching and learning with modern digital experiences in one department or programme.","digital-learning"],["systems","Academic Systems Pilot","Selected functions","Modernise key academic processes for efficiency and data visibility.","academic-systems"],["shield","Cyber Readiness Pilot","Institution-wide awareness","Strengthen security posture through risk assessment, awareness and quick wins.","cyber-readiness"],["landmark","Transformation Pilot","Cross-functional initiative","Drive integrated change across functions with a clear focus on outcomes.","institutional-transformation"]] %}
+      <a class="card" href="/solutions/{{ m[4] }}/" data-reveal>
+        <span class="card__icon">{{ icon(m[0], 22) }}</span>
+        <h3>{{ m[1] }}</h3>
+        <span class="insight__tag" style="margin:0">{{ m[2] }}</span>
+        <p>{{ m[3] }}</p>
+        <span class="link-arrow">Explore {{ arrow() }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="journey-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">The pilot journey</p><h2 id="journey-title">From first workshop to scaled success</h2></header>
+    <ol class="steps" role="list" data-reveal>
+      {% for st in [["search","Discover","Understand your current state, priorities and desired outcomes."],["pen","Design","Co-create a pilot plan with scope, success metrics and roadmap."],["rocket","Deploy","Implement the solution with our experts and enable your teams."],["bars","Measure","Track performance, measure impact and capture key learnings."],["expand","Scale","Refine, expand and scale across the institution with confidence."]] %}
+      <li class="steps__item" style="--i: {{ loop.index0 }}"><span class="steps__icon">{{ icon(st[0], 22) }}</span><span class="steps__num">0{{ loop.index }}</span><h3>{{ st[1] }}</h3><p>{{ st[2] }}</p></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section section--soft" aria-labelledby="engage-title">
+  <div class="container split">
+    <div data-reveal>
+      <p class="eyebrow">Success metrics</p>
+      <h2>What we measure</h2>
+      <ul class="ticks" style="font-size:var(--fs-base)">
+        <li><strong>Student engagement:</strong> participation, retention and satisfaction</li>
+        <li><strong>Faculty adoption:</strong> use of and confidence in digital tools</li>
+        <li><strong>Operational efficiency:</strong> streamlined processes and less manual effort</li>
+        <li><strong>Institutional outcomes:</strong> better decisions and strategic progress</li>
+      </ul>
+    </div>
+    <div data-reveal>
+      <p class="eyebrow">Engagement models</p>
+      <h2 id="engage-title">Pick a timeline that fits</h2>
+      <ul class="pilot__models" role="list" style="margin-bottom:var(--sp-5)">
+        <li><strong>8 weeks</strong><span>Focused pilot with quick outcomes and learnings</span></li>
+        <li><strong>12 weeks</strong><span>Extended pilot for deeper validation and impact</span></li>
+        <li><strong>Semester</strong><span>Aligned with your academic calendar</span></li>
+      </ul>
+      <a class="btn" href="{{ pilotCta.href }}">{{ pilotCta.label }} {{ arrow() }}</a>
+    </div>
+  </div>
+</section>
+
+{{ ctaBand("Ready to begin your pilot journey?", "Let's design a pilot that delivers measurable impact and sets the foundation for transformation.", "Request a Pilot", "/contact/?interest=pilot") }}

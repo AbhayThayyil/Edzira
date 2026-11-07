@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+bodyClass: has-dark-hero
+title: Insights
+seoTitle: Insights on Academic Digital Transformation
+description: Thought leadership and practical insights on academic digital transformation, digital learning, student systems, cyber readiness and building future-ready institutions.
+breadcrumbs:
+  - { title: Home, href: / }
+  - { title: Insights, href: /insights/ }
+---
+{% from "partials/icons.njk" import arrow %}
+{% from "partials/photo.njk" import photo with context %}
+{% from "partials/page.njk" import pageHero, ctaBand with context %}
+{% set posts = collections.insights | reverse %}
+{% set topics = [] %}{% for p in posts %}{% if p.data.tag not in topics %}{% set topics = (topics.push(p.data.tag), topics) %}{% endif %}{% endfor %}
+
+{{ pageHero("Insights", "Ideas. Perspectives.", "Impact.", "Thought leadership and practical insights on academic digital transformation, emerging technology and building future-ready institutions.") }}
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="chips" role="group" aria-label="Filter by topic" data-filter>
+      <button class="chip" type="button" aria-pressed="true" data-topic="all">All topics</button>
+      {% for t in topics %}<button class="chip" type="button" aria-pressed="false" data-topic="{{ t }}">{{ t }}</button>{% endfor %}
+    </div>
+    <h2 class="visually-hidden">All articles</h2>
+    <div class="insights insights--page">
+      {% for p in posts %}
+      <article class="insight{% if p.data.featured %} insight--featured{% endif %}" data-topic="{{ p.data.tag }}">
+        <div class="insight__media">{{ photo(p.data.image, p.data.imageAlt, "(min-width: 900px) 420px, 90vw", loop.first) }}</div>
+        <div class="insight__body">
+          <span class="insight__tag">{{ p.data.tag }}</span>
+          <h3><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
+          <p style="font-size:var(--fs-sm);margin:0">{{ p.data.description }}</p>
+          <span class="insight__meta"><time datetime="{{ p.date | isoDate }}">{{ p.date | readableDate }}</time> · {{ p.data.readMins }} min read</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ ctaBand("Want to talk about any of these ideas?", "Our team is happy to share what we're seeing across institutions.") }}

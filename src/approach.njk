@@ -1,0 +1,52 @@
+---
+layout: layouts/base.njk
+bodyClass: has-dark-hero
+title: Our Approach
+seoTitle: Our Approach to Academic Digital Transformation
+description: Our 5-step approach (Discover, Design, Deploy, Measure, Evolve) delivers measurable transformation for universities, colleges and public institutions.
+breadcrumbs:
+  - { title: Home, href: / }
+  - { title: Approach, href: /approach/ }
+---
+{% from "partials/icons.njk" import arrow, icon %}
+{% from "partials/page.njk" import pageHero, ctaBand with context %}
+
+{{ pageHero("Our approach", "A proven framework for", "academic transformation.", "We partner with institutions to understand their context, co-create the right solutions and deliver measurable impact across the whole academic ecosystem.", "serve-government", "Public institution building", { label: "Explore Our Solutions", href: "/solutions/" }) }}
+
+<section class="section section--soft" aria-labelledby="framework-title">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">The Edzira framework</p>
+      <h2 id="framework-title">Five steps from first conversation to lasting change</h2>
+      <p class="lead">Every engagement follows the same path, whether it's a focused pilot or a campus-wide programme.</p>
+    </header>
+    <ol class="process" role="list" data-reveal-group>
+      {% for st in [
+        ["search", "Discover", "Understand your institution's goals, challenges and learner needs.", ["Stakeholder interviews and workshops", "Review of current systems, processes and data", "Clear priorities and success measures"]],
+        ["pen", "Design", "Shape tailored solutions and plan how systems, data and people connect.", ["Solution design and roadmap", "Integration and data plan", "Change and training plan"]],
+        ["rocket", "Deploy", "Implement and integrate with quality, training and continuous support.", ["Phased rollout with minimal disruption", "Training for faculty, staff and students", "Hands-on support through go-live"]],
+        ["bars", "Measure", "Track performance and impact with clear, data-driven insight.", ["Dashboards tied to agreed goals", "Regular progress reviews", "Evidence for leadership and accreditation"]],
+        ["refresh", "Evolve", "Keep improving based on feedback, outcomes and new needs.", ["Continuous improvement cycles", "Scaling what works to new areas", "Long-term partnership"]]
+      ] %}
+      <li class="process__item" data-reveal>
+        <span class="process__num">0{{ loop.index }}</span>
+        <div><h3><span class="card__icon">{{ icon(st[0], 22) }}</span>{{ st[1] }}</h3><p>{{ st[2] }}</p></div>
+        <ul class="ticks">{% for t in st[3] %}<li>{{ t }}</li>{% endfor %}</ul>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="principles-title">
+  <div class="container">
+    <header class="section-head" data-reveal><p class="eyebrow">How we work</p><h2 id="principles-title">How we deliver transformation</h2></header>
+    <div class="grid grid--5" data-reveal-group>
+      {% for p in [["users","Collaborative partnership","We work as an extension of your team with a shared commitment to impact."],["layers","Solution-agnostic","We recommend the technologies that fit your context, not a fixed product."],["shield","Secure & compliant","Security, privacy and compliance are built into everything we deliver."],["target","Outcome-driven","We focus on outcomes that matter to students, faculty and the institution."],["chart","Scalable & sustainable","Designed to grow with you and to keep working after we step back."]] %}
+      <div class="card card--soft" data-reveal><span class="card__icon">{{ icon(p[0], 22) }}</span><h3>{{ p[1] }}</h3><p>{{ p[2] }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ ctaBand("Ready to begin your transformation journey?", "Start with a conversation about your goals. We'll suggest the right first step.") }}
