@@ -16,7 +16,7 @@ Static site built with [Eleventy](https://www.11ty.dev/). Output is plain HTML/C
 - `/styleguide/` internal page showing the design foundation (noindex, excluded from sitemap).
 
 ## Conventions
-- Primary CTA everywhere: "Book a Consultation". Pilot page uses "Request a Pilot".
+- Primary CTA everywhere: "Book a Consultation". Pilot page uses "Request a Pilot" (the header button keeps the width of the default label, so the nav never shifts).
 - Process: 5 steps (Discover, Design, Deploy, Measure, Evolve).
 - Add `data-reveal` to any element to fade it in on scroll; wrap siblings in `data-reveal-group` to stagger.
 - Anything unverified (stats, case studies, partner logos) gets the `placeholder-flag` class until confirmed.
@@ -46,7 +46,7 @@ Cloudflare Pages settings (after pushing this folder to a GitHub repo):
 
 - [ ] Create a Formspree form (formspree.io, free tier) and set `FORM_ACTION`.
 - [ ] Buy/point the domain and set `SITE_URL`.
-- [ ] Replace placeholders: phone, email, office addresses (`src/_data/site.js`), stats (`src/index.njk`, `src/about.njk`), social links.
+- [ ] Replace placeholders: phone, email, office addresses (`src/_data/site.js`), social links.
 - [ ] Legal review of `src/privacy.njk` and `src/terms.njk`.
 - [ ] Replace placeholder articles, then set `placeholder: false` in each post so it is indexed.
 - [ ] After launch: add the site to Google Search Console and Bing Webmaster Tools, submit `/sitemap.xml`.

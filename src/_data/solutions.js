@@ -1,10 +1,14 @@
-// Content for the Solutions overview and the five solution pages.
+// Single source for all solution content: header menu, footer, homepage cards,
+// the Solutions overview, the five solution pages and the contact form.
 // Copy is a starting draft based on the design mockups; edit freely.
 export default [
   {
     slug: "digital-learning",
     title: "Digital Learning",
     icon: "book",
+    blurb: "Content, assessments, LMS and certification pathways.", // header menu
+    summary: "Modern learning experiences with digital content, assessments, certifications and faculty development.", // homepage card
+    homeTags: ["Digital content", "LMS platforms", "Assessments", "Certification pathways"], // homepage card
     photo: "insight-learning",
     photoAlt: "Student learning on a laptop",
     seoTitle: "Digital Learning Solutions for Higher Education",
@@ -31,6 +35,9 @@ export default [
     slug: "academic-systems",
     title: "Academic Systems",
     icon: "systems",
+    blurb: "Student information systems and academic operations.", // header menu
+    summary: "Student information systems and academic operations that simplify administration and improve the student experience.", // homepage card
+    homeTags: ["Student information system", "Academic administration", "Data & reporting"], // homepage card
     photo: "serve-colleges",
     photoAlt: "Students and staff working together on laptops",
     seoTitle: "Academic Systems and Student Information Systems",
@@ -57,6 +64,9 @@ export default [
     slug: "institutional-transformation",
     title: "Institutional Transformation",
     icon: "landmark",
+    blurb: "Outcome-driven programmes that change how campuses work.", // header menu
+    summary: "Outcome-driven programmes that improve engagement, performance and impact across campus.", // homepage card
+    homeTags: ["Digital campus", "Outcome analytics", "Change management"], // homepage card
     photo: "hero-campus",
     photoAlt: "Modern university campus building",
     seoTitle: "Institutional Transformation for Higher Education",
@@ -82,6 +92,9 @@ export default [
     slug: "cyber-readiness",
     title: "Cyber Readiness",
     icon: "shield",
+    blurb: "Awareness, skills and safer digital environments.", // header menu
+    summary: "Awareness programmes and skills pathways that build safer digital environments.", // homepage card
+    homeTags: ["Awareness programmes", "Simulations & labs", "Policy & governance"], // homepage card
     photo: "insight-cyber",
     photoAlt: "Abstract image of code representing digital security",
     seoTitle: "Cyber Readiness for Academic Institutions",
@@ -107,6 +120,9 @@ export default [
     slug: "training-enablement",
     title: "Training & Enablement",
     icon: "users",
+    blurb: "Adoption at scale through capability building.", // header menu
+    summary: "Adoption at scale through training, capacity building and continuous enablement.", // homepage card
+    homeTags: ["Training programmes", "Capacity building", "Ongoing support"], // homepage card
     photo: "pilot-training",
     photoAlt: "Faculty training session in progress",
     seoTitle: "Training and Enablement for Faculty and Staff",

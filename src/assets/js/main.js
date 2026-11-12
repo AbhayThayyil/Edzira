@@ -17,11 +17,23 @@ toggle?.addEventListener("click", () => {
   const open = document.body.classList.toggle("nav-open");
   toggle.setAttribute("aria-expanded", String(open));
 });
+const drawer = document.getElementById("site-nav");
 document.addEventListener("keydown", (e) => {
-  if (e.key !== "Escape") return;
-  document.body.classList.remove("nav-open");
-  toggle?.setAttribute("aria-expanded", "false");
-  closeMenus();
+  const drawerOpen = document.body.classList.contains("nav-open");
+  if (e.key === "Escape") {
+    document.body.classList.remove("nav-open");
+    toggle?.setAttribute("aria-expanded", "false");
+    closeMenus();
+    if (drawerOpen) toggle?.focus(); // return focus to the menu button
+    return;
+  }
+  // While the mobile drawer is open, Tab cycles through the menu button and the drawer's links only.
+  if (e.key !== "Tab" || !drawerOpen || !toggle || !drawer) return;
+  const items = [toggle, ...drawer.querySelectorAll("a[href], button")].filter((el) => el.getClientRects().length);
+  const first = items[0], last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  else if (!items.includes(document.activeElement)) { e.preventDefault(); first.focus(); }
 });
 
 // Solutions dropdown: click/tap to toggle, hover on pointer devices.
@@ -72,25 +84,8 @@ if ("IntersectionObserver" in window) {
 } else {
   revealables.forEach((el) => el.classList.add("is-visible"));
 }
-
-// Count-up for stats when they scroll into view.
-const counters = document.querySelectorAll("[data-count]");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
-  const co = new IntersectionObserver((entries) => entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    co.unobserve(entry.target);
-    const el = entry.target, end = Number(el.dataset.count), start = performance.now(), dur = 1400;
-    const tick = (now) => {
-      const t = Math.min((now - start) / dur, 1);
-      el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    el.textContent = "0";
-    requestAnimationFrame(tick);
-  }), { threshold: 0.6 });
-  counters.forEach((el) => co.observe(el));
-}
+// Tells the inline fallback in base.njk that reveal is working, so content stays managed by it.
+window.edziraReady = true;
 
 // Pause looping animations in sections that are off screen.
 const loopers = document.querySelectorAll(".hero");

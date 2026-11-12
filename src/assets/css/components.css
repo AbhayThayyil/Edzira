@@ -81,6 +81,10 @@
 .mega span { display: block; color: var(--muted); font-size: 0.8125rem; line-height: 1.45; margin-top: 2px; }
 
 .site-header__cta { min-height: 42px; white-space: nowrap; padding-inline: var(--sp-4); }
+/* Labels share one grid cell: the button is as wide as the longest, the visible one is centred. */
+.cta-stack { display: inline-grid; }
+.cta-stack > span { grid-area: 1 / 1; text-align: center; }
+.cta-stack__sizer { visibility: hidden; }
 @media (max-width: 1220px) and (min-width: 1021px) { .nav__link { padding-inline: 10px; } .site-header__inner { gap: var(--sp-3); } }
 .nav-toggle { display: none; }
 

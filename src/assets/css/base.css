@@ -23,6 +23,8 @@ a:hover { color: var(--color-action-hover); }
 .container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
 .section { padding-block: var(--sp-section); }
 .section--soft { background: var(--bg-soft); }
+/* For a section that follows another of the same background: drops the doubled gap between them. */
+.section--follow { padding-top: 0; }
 .section--dark { background: var(--gradient-dark); color: #c8d3ea; }
 .section--dark :is(h1, h2, h3, h4) { color: #fff; }
 

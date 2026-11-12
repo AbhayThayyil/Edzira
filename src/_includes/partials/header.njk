@@ -23,6 +23,8 @@
       </ul>
       <a class="btn nav__cta-mobile" href="{{ site.cta.href }}">{{ site.cta.label }} {{ arrow() }}</a>
     </nav>
-    <a class="btn site-header__cta" href="{{ ctaHref or site.cta.href }}">{{ ctaLabel or site.cta.label }} {{ arrow() }}</a>
+    {#- A page can relabel the header button (ctaLabel). The default label is stacked invisibly underneath
+        so the button keeps the same width and the nav items never move between pages. -#}
+    <a class="btn site-header__cta" href="{{ ctaHref or site.cta.href }}"><span class="cta-stack"><span>{{ ctaLabel or site.cta.label }}</span>{% if ctaLabel and ctaLabel != site.cta.label %}<span class="cta-stack__sizer" aria-hidden="true">{{ site.cta.label }}</span>{% endif %}</span> {{ arrow() }}</a>
   </div>
 </header>

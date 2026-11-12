@@ -103,9 +103,13 @@ a.card:hover .icon-arrow { transform: translateX(4px); }
 .notice { max-width: 720px; margin: 0 auto var(--sp-6); padding: var(--sp-4) var(--sp-5); border-radius: var(--radius); background: #fff7e6; border: 1px solid #f5d38a; color: #7a5200; font-size: var(--fs-sm); }
 
 /* ---------- Contact ---------- */
-.contact { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--sp-7); align-items: start; }
+.contact { --form-pad: clamp(1.5rem, 1rem + 2vw, 2.5rem); display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--sp-7); align-items: start; }
 @media (max-width: 960px) { .contact { grid-template-columns: 1fr; } }
-.form { padding: clamp(1.5rem, 1rem + 2vw, 2.5rem); border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
+/* Side column starts at the same height as the text inside the form card (its padding + 1px border),
+   so "Book a consultation" and "Reach out to us" sit on one line. */
+.contact__aside { padding-top: calc(var(--form-pad) + 1px); }
+@media (max-width: 960px) { .contact__aside { padding-top: 0; } }
+.form { padding: var(--form-pad, clamp(1.5rem, 1rem + 2vw, 2.5rem)); border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
 .form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
 .form__full { grid-column: 1 / -1; }
 @media (max-width: 600px) { .form__grid { grid-template-columns: 1fr; } }
@@ -149,3 +153,16 @@ a.card:hover .icon-arrow { transform: translateX(4px); }
 .office h3 { font-size: var(--fs-base); margin: 0 0 4px; }
 .office p, .office address { margin: 0; font-size: var(--fs-sm); font-style: normal; }
 .office .card__icon { width: 44px; height: 44px; }
+
+/* About: head office (copy + contact on the left, address card on the right) */
+.presence { align-items: center; }
+.presence h2 { margin-bottom: var(--sp-4); }
+.presence__contact { list-style: none; margin: var(--sp-6) 0 0; padding: 0; display: grid; gap: var(--sp-4); }
+.presence__contact li { display: flex; align-items: center; gap: var(--sp-4); }
+.presence__contact small { display: block; font-size: 0.8125rem; color: var(--muted); }
+.presence__contact a { font-weight: 600; color: var(--ink); text-decoration: none; }
+.presence__contact a:hover { color: var(--color-action); }
+.presence__cards { display: grid; gap: var(--sp-5); }
+.presence__card { padding: var(--sp-7); border-top: 4px solid var(--teal-600); }
+.presence__card address { font-style: normal; font-size: var(--fs-base); line-height: 1.7; }
+.presence__card .link-arrow { padding-top: var(--sp-2); }

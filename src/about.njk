@@ -8,7 +8,7 @@ breadcrumbs:
   - { title: Home, href: / }
   - { title: About, href: /about/ }
 ---
-{% from "partials/icons.njk" import arrow, icon, pin %}
+{% from "partials/icons.njk" import arrow, icon, pin, mail, phone %}
 {% from "partials/photo.njk" import photo with context %}
 {% from "partials/page.njk" import pageHero, ctaBand with context %}
 
@@ -29,19 +29,7 @@ breadcrumbs:
   </div>
 </section>
 
-<section class="section section--soft" aria-labelledby="stats-title">
-  <div class="container">
-    <h2 id="stats-title" class="visually-hidden">Edzira in numbers</h2>
-    {# PLACEHOLDER figures. Replace with verified numbers before launch. #}
-    <dl class="stats{% if site.showPlaceholders %} placeholder-flag{% endif %}" style="margin:0;background:#fff" data-reveal>
-      {% for st in [[100,"+","Institutions served"],[1,"M+","Learners impacted"],[500,"+","Projects delivered"],[20,"+","Years of industry experience"]] %}
-      <div class="stats__item"><dt>{{ st[2] }}</dt><dd><span data-count="{{ st[0] }}">{{ st[0] }}</span>{{ st[1] }}</dd></div>
-      {% endfor %}
-    </dl>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="values-title">
+<section class="section section--follow" aria-labelledby="values-title">
   <div class="container">
     <header class="section-head" data-reveal><p class="eyebrow">Why partner with us</p><h2 id="values-title">Why institutions partner with Edzira</h2></header>
     <div class="grid" data-reveal-group>
@@ -53,15 +41,24 @@ breadcrumbs:
 </section>
 
 <section class="section section--soft" aria-labelledby="presence-title">
-  <div class="container">
-    <header class="section-head" data-reveal><p class="eyebrow">Where we are</p><h2 id="presence-title">Offices across India</h2></header>
-    <div class="grid" data-reveal-group>
+  <div class="container split presence">
+    <div data-reveal>
+      <p class="eyebrow">Where we are</p>
+      <h2 id="presence-title">Our head office</h2>
+      <p class="lead">Based in Bangalore, we partner with universities, colleges and public institutions across India. Visit us, call or write, whichever suits you.</p>
+      <ul class="presence__contact" role="list">
+        <li><span class="card__icon">{{ phone() }}</span><span><small>Call us</small><a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone | replace(" ", "&nbsp;") | safe }}</a></span></li>
+        <li><span class="card__icon">{{ mail() }}</span><span><small>Email us</small><a href="mailto:{{ site.email }}">{{ site.email }}</a></span></li>
+      </ul>
+    </div>
+    <div class="presence__cards" data-reveal-group>
       {% for o in site.offices %}
-      <div class="card" data-reveal>
+      <div class="card presence__card" data-reveal>
         <span class="card__icon">{{ icon("landmark", 22) }}</span>
         <h3>{{ o.city }}</h3>
         <span class="insight__tag" style="margin:0">{{ o.label }}</span>
-        <address style="font-style:normal;font-size:var(--fs-sm)">{{ site.legalName }}<br>{{ o.street }}<br>{{ o.city }} {{ o.postalCode }}, {{ o.region }}, India</address>
+        <address>{{ site.legalName }}<br>{{ o.street }}<br>{{ o.city }} {{ o.postalCode }}, {{ o.region }}, India</address>
+        <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&amp;query={{ (o.street + ', ' + o.city + ' ' + o.postalCode + ', ' + o.region + ', India') | urlencode }}" target="_blank" rel="noopener">Get directions {{ arrow() }}</a>
       </div>
       {% endfor %}
     </div>

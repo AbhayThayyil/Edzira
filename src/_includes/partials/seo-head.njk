@@ -27,22 +27,22 @@
     {
       "@type": "Organization",
       "@id": "{{ '/' | absoluteUrl(site.url) }}#organization",
-      "name": "{{ site.name }}",
-      "legalName": "{{ site.legalName }}",
+      "name": {{ site.name | json | safe }},
+      "legalName": {{ site.legalName | json | safe }},
       "url": "{{ '/' | absoluteUrl(site.url) }}",
       "logo": "{{ '/assets/img/edzira-logo-480.png' | absoluteUrl(site.url) }}",
-      "slogan": "{{ site.tagline }}",
-      "email": "{{ site.email }}",
-      "telephone": "{{ site.phone }}",
+      "slogan": {{ site.tagline | json | safe }},
+      "email": {{ site.email | json | safe }},
+      "telephone": {{ site.phone | json | safe }},
       "address": [{% for o in site.offices %}
-        { "@type": "PostalAddress", "streetAddress": {{ o.street | json | safe }}, "addressLocality": "{{ o.city }}", "addressRegion": "{{ o.region }}", "postalCode": "{{ o.postalCode }}", "addressCountry": "IN" }{% if not loop.last %},{% endif %}{% endfor %}
+        { "@type": "PostalAddress", "streetAddress": {{ o.street | json | safe }}, "addressLocality": {{ o.city | json | safe }}, "addressRegion": {{ o.region | json | safe }}, "postalCode": {{ o.postalCode | json | safe }}, "addressCountry": "IN" }{% if not loop.last %},{% endif %}{% endfor %}
       ]
     },
     {
       "@type": "WebSite",
       "@id": "{{ '/' | absoluteUrl(site.url) }}#website",
       "url": "{{ '/' | absoluteUrl(site.url) }}",
-      "name": "{{ site.name }}",
+      "name": {{ site.name | json | safe }},
       "inLanguage": "{{ site.language }}",
       "publisher": { "@id": "{{ '/' | absoluteUrl(site.url) }}#organization" }
     }{% if breadcrumbs %},

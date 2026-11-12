@@ -2,7 +2,8 @@
 {
   layout: "layouts/base.njk",
   bodyClass: "has-dark-hero",
-  pagination: { data: "solutions", size: 1, alias: "s" },
+  // addAllPagesToCollections: every solution page (not just the first) goes in the sitemap.
+  pagination: { data: "solutions", size: 1, alias: "s", addAllPagesToCollections: true },
   permalink: (data) => `/solutions/${data.s.slug}/`,
   eleventyComputed: {
     title: (data) => data.s.title,

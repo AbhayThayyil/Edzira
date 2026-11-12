@@ -15,16 +15,14 @@ export default {
   ogImage: "/assets/img/og-default.png",
   // PLACEHOLDER contact details from the design mockups. Replace before launch.
   email: "hello@edzira.com",
-  phone: "+91 80 1234 5678",
+  phone: "+91 99405 95845",
   social: {
     linkedin: "#",
     x: "#",
     youtube: "#",
   },
   offices: [
-    { city: "Bangalore", label: "Head Office", street: "#45, 3rd Floor, 17th Cross, Sector 4, HSR Layout", postalCode: "560102", region: "Karnataka" },
-    { city: "Calicut", label: "Office", street: "2nd Floor, Cyberpark Kozhikode", postalCode: "673016", region: "Kerala" },
-    { city: "Pune", label: "Office", street: "5th Floor, West Wing, ICC Trade Tower, Senapati Bapat Road", postalCode: "411016", region: "Maharashtra" },
+    { city: "Bangalore", label: "Head Office", street: "D004, SJR Palazza City, Sarjapura Main Road, Carmelram, Bangalore South", postalCode: "560035", region: "Karnataka" },
   ],
   // Contact form endpoint. Create a free form at formspree.io and paste its URL here
   // (or set FORM_ACTION at build time). Until then the form shows a friendly fallback.

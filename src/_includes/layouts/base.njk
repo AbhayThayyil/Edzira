@@ -3,7 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>document.documentElement.classList.add("js")</script>
+  {#- Hides scroll-reveal content until main.js runs. If main.js has not run within 3s (blocked, failed,
+      very slow), the class is removed so all content shows. Changing this script means updating its
+      sha256 hash in src/static/_headers (Content-Security-Policy). -#}
+  <script>document.documentElement.classList.add("js");setTimeout(function(){if(!window.edziraReady)document.documentElement.classList.remove("js")},3000)</script>
   {% include "partials/seo-head.njk" %}
   <meta name="theme-color" content="{{ site.themeColor }}">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
