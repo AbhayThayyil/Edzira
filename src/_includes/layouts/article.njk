@@ -18,7 +18,7 @@ layout: layouts/base.njk
   <div class="container" style="padding-bottom:var(--sp-section)">
     {% if placeholder and site.showPlaceholders %}<p class="notice"><strong>Placeholder article.</strong> Hidden from search engines until <code>placeholder: false</code> is set in this file.</p>{% endif %}
     <div class="prose">{{ content | safe }}</div>
-    <p class="prose" style="margin-top:var(--sp-7)"><a class="link-arrow" href="/insights/">All insights {{ arrow() }}</a></p>
+    {% if site.showInsights %}<p class="prose" style="margin-top:var(--sp-7)"><a class="link-arrow" href="/insights/">All insights {{ arrow() }}</a></p>{% endif %}
   </div>
 </article>
 {{ ctaBand() }}

@@ -7,11 +7,13 @@
         <img src="/assets/img/edzira-logo-480.png" alt="Edzira: Transforming Institutions. Enabling Futures." width="1147" height="663" loading="lazy" decoding="async">
       </picture>
       <p>Academic digital transformation and learning ecosystems for universities, colleges and public institutions.</p>
+      {% if site.hasSocial %}
       <div class="social">
-        <a href="{{ site.social.linkedin }}" aria-label="Edzira on LinkedIn">{{ linkedin() }}</a>
-        <a href="{{ site.social.x }}" aria-label="Edzira on X">{{ xlogo() }}</a>
-        <a href="{{ site.social.youtube }}" aria-label="Edzira on YouTube">{{ youtube() }}</a>
+        {% if site.social.linkedin %}<a href="{{ site.social.linkedin }}" aria-label="Edzira on LinkedIn">{{ linkedin() }}</a>{% endif %}
+        {% if site.social.x %}<a href="{{ site.social.x }}" aria-label="Edzira on X">{{ xlogo() }}</a>{% endif %}
+        {% if site.social.youtube %}<a href="{{ site.social.youtube }}" aria-label="Edzira on YouTube">{{ youtube() }}</a>{% endif %}
       </div>
+      {% endif %}
     </div>
     <nav aria-labelledby="f-solutions">
       <h2 id="f-solutions">Solutions</h2>

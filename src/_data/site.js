@@ -1,5 +1,11 @@
 // Global site settings. SITE_URL is set at build time once the domain is decided:
 //   SITE_URL=https://www.edzira.com npm run build
+const social = { linkedin: "", x: "", youtube: "" };
+
+const offices = [
+  { city: "Bangalore", label: "Head Office", street: "D004, SJR Palazza City, Sarjapura Main Road, Carmelram, Bangalore South", postalCode: "560035", region: "Karnataka" },
+];
+
 export default {
   name: "Edzira",
   legalName: "Edzira Learning Private Limited",
@@ -13,17 +19,19 @@ export default {
   language: "en-IN",
   themeColor: "#0A1A3A",
   ogImage: "/assets/img/og-default.png",
-  // PLACEHOLDER contact details from the design mockups. Replace before launch.
-  email: "hello@edzira.com",
+  // Insights section (nav, home page and /insights/). Set false to hide it everywhere.
+  // Each article needs `placeholder: false` in its front matter to be indexed and listed in the sitemap.
+  showInsights: true,
+  // Confirmed contact details.
+  email: "sparambil@edzira.com",
   phone: "+91 99405 95845",
-  social: {
-    linkedin: "#",
-    x: "#",
-    youtube: "#",
-  },
-  offices: [
-    { city: "Bangalore", label: "Head Office", street: "D004, SJR Palazza City, Sarjapura Main Road, Carmelram, Bangalore South", postalCode: "560035", region: "Karnataka" },
-  ],
+  // Footer icons appear automatically for any network with a URL. Leave "" until the profile exists
+  // (profiles are due about a month after launch).
+  social,
+  hasSocial: Object.values(social).some(Boolean),
+  offices,
+  // Used on the legal pages. Looked up by label so the order of `offices` does not matter.
+  headOffice: offices.find((o) => o.label === "Head Office") ?? offices[0],
   // Contact form endpoint. Create a free form at formspree.io and paste its URL here
   // (or set FORM_ACTION at build time). Until then the form shows a friendly fallback.
   formAction: process.env.FORM_ACTION || "https://formspree.io/f/YOUR_FORM_ID",

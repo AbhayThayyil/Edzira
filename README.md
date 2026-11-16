@@ -46,8 +46,10 @@ Cloudflare Pages settings (after pushing this folder to a GitHub repo):
 
 - [ ] Create a Formspree form (formspree.io, free tier) and set `FORM_ACTION`.
 - [ ] Buy/point the domain and set `SITE_URL`.
-- [ ] Replace placeholders: phone, email, office addresses (`src/_data/site.js`), social links.
-- [ ] Legal review of `src/privacy.njk` and `src/terms.njk`.
-- [ ] Replace placeholder articles, then set `placeholder: false` in each post so it is indexed.
+- [x] Contact details (phone, email, head office) confirmed in `src/_data/site.js`.
+- [ ] Social links: hidden for now. Add the real URLs under `social` in `src/_data/site.js` (they are `""` now) and each icon appears in the footer automatically.
+- [ ] Privacy and Terms approved for launch (draft notices removed). The client still needs to confirm its commitments: 30-day reply, 24-month retention, no analytics.
+- [ ] Review the 4 Insights articles in `src/insights/posts/` (especially the DPDP Act one, which should be checked by a lawyer) and set each article's real publish date. `showInsights` in `src/_data/site.js` hides the whole section if set to `false`.
+- [ ] Mailbox: the site uses `sparambil@edzira.com` (set in `src/_data/site.js`). Create the Formspree form under that address so every enquiry arrives there.
 - [ ] After launch: add the site to Google Search Console and Bing Webmaster Tools, submit `/sitemap.xml`.
 - [ ] Open the live site in Safari and Firefox once (only Chromium is covered by automated checks).

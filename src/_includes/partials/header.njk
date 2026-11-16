@@ -11,14 +11,14 @@
     <nav class="nav" id="site-nav" aria-label="Main">
       <ul class="nav__list">
         <li class="nav__item nav__item--menu" data-open="false">
-          <button class="nav__link" type="button" aria-expanded="false" aria-controls="menu-solutions"{% if page.url.startsWith('/solutions/') %} aria-current="page"{% endif %}>Solutions {{ chevron() }}</button>
+          <button class="nav__link" type="button" aria-expanded="false" aria-controls="menu-solutions"{% if (page.url or '').startsWith('/solutions/') %} aria-current="page"{% endif %}>Solutions {{ chevron() }}</button>
           <ul class="mega" id="menu-solutions">
             {% for s in nav.solutions %}<li><a href="{{ s.href }}"><strong>{{ s.title }}</strong><span>{{ s.blurb }}</span></a></li>{% endfor %}
             <li><a href="/solutions/"><strong>All solutions</strong><span>See how the pieces connect.</span></a></li>
           </ul>
         </li>
         {% for item in nav.main %}
-        <li class="nav__item"><a class="nav__link" href="{{ item.href }}"{% if page.url == item.href or (item.href != '/' and page.url.startsWith(item.href)) %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        <li class="nav__item"><a class="nav__link" href="{{ item.href }}"{% if page.url == item.href or (item.href != '/' and (page.url or '').startsWith(item.href)) %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
         {% endfor %}
       </ul>
       <a class="btn nav__cta-mobile" href="{{ site.cta.href }}">{{ site.cta.label }} {{ arrow() }}</a>

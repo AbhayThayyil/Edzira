@@ -1,4 +1,5 @@
 import solutions from "./solutions.js";
+import site from "./site.js";
 
 export default {
   // Built from solutions.js so names and links live in one place.
@@ -6,7 +7,7 @@ export default {
   main: [
     { title: "Approach", href: "/approach/" },
     { title: "Pilot Program", href: "/pilot-program/" },
-    { title: "Insights", href: "/insights/" },
+    ...(site.showInsights ? [{ title: "Insights", href: "/insights/" }] : []),
     { title: "About", href: "/about/" },
     { title: "Contact", href: "/contact/" },
   ],

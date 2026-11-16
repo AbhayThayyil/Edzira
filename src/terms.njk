@@ -1,26 +1,53 @@
 ---
 layout: layouts/base.njk
+lastUpdated: 2026-11-16
 title: Terms of Use
 description: Terms governing the use of the Edzira website.
 breadcrumbs:
   - { title: Home, href: / }
   - { title: Terms of Use, href: /terms/ }
 ---
+{% set office = site.headOffice %}
 <section class="page-hero section--dark" style="padding-bottom:var(--sp-7)"><div class="container page-hero__inner"><p class="eyebrow">Legal</p><h1 id="page-title">Terms of Use</h1></div></section>
 <section class="section"><div class="container">
-  <p class="notice"><strong>Template.</strong> This is a starting draft, not legal advice. Have it reviewed before launch.</p>
   <div class="prose">
-    <p>By using this website you agree to these terms. If you do not agree, please do not use the site.</p>
-    <h2>Use of content</h2>
-    <p>All content on this website, including text, graphics and logos, belongs to {{ site.legalName }} or its licensors. You may view and share it for personal, non-commercial purposes with attribution.</p>
-    <h2>No warranty</h2>
-    <p>Information on this website is provided for general purposes and may change without notice. It does not form an offer or contract.</p>
+    <p>These terms apply to your use of this website, which is operated by {{ site.legalName }} ("Edzira", "we", "us"). By using the site you agree to them. If you do not agree, please do not use the site. Our <a href="/privacy/">Privacy Policy</a> explains how we handle personal information.</p>
+
+    <h2>Using this website</h2>
+    <p>You may use this website for lawful purposes only. You must not:</p>
+    <ul>
+      <li>try to gain unauthorised access to the site, its servers or any connected systems;</li>
+      <li>introduce malware, or interfere with the site's operation or security;</li>
+      <li>use automated tools to scrape the site or send spam through the contact form; or</li>
+      <li>use the site in a way that breaks any applicable law or the rights of others.</li>
+    </ul>
+
+    <h2>Our content</h2>
+    <p>All content on this website, including text, graphics, logos, photographs and design, belongs to {{ site.legalName }} or its licensors and is protected by intellectual property laws. You may view the site and share its pages or short extracts for personal, non-commercial purposes with clear credit to Edzira. You may not copy, modify, sell or republish our content otherwise without our written permission. The Edzira name and logo are our marks and may not be used without our consent.</p>
+
+    <h2>Information on this site</h2>
+    <p>The information on this website is provided for general information only. It is not professional, legal, financial or technical advice, and it does not form an offer, proposal or contract. Any services we provide will be set out in a separate written agreement. We try to keep the site accurate and up to date but do not promise that it is complete or error-free, and it may change without notice.</p>
+
+    <h2>Contact form and enquiries</h2>
+    <p>When you send us an enquiry, you confirm that the details you give are accurate and that you are allowed to share them. Sending an enquiry does not create a business relationship or any obligation on either side. We use the information as described in our Privacy Policy.</p>
+
     <h2>Links to other sites</h2>
-    <p>We are not responsible for the content of external websites linked from this site.</p>
+    <p>This website may link to websites run by others. We do not control them and are not responsible for their content, availability or privacy practices. A link is not an endorsement.</p>
+
+    <h2>Availability</h2>
+    <p>We may suspend, change or withdraw all or part of the site at any time, and we do not promise that it will always be available or free from interruption.</p>
+
+    <h2>Disclaimer and limit of liability</h2>
+    <p>The site and its content are provided "as is" and "as available", without warranties of any kind, to the extent the law allows. To the extent the law allows, Edzira is not liable for any loss or damage arising from your use of, or inability to use, this website or from relying on its content. Nothing in these terms limits liability that cannot be limited under applicable law.</p>
+
+    <h2>Changes to these terms</h2>
+    <p>We may update these terms from time to time. The updated version applies from the date shown below, and continuing to use the site means you accept it.</p>
+
     <h2>Governing law</h2>
-    <p>These terms are governed by the laws of India.</p>
-    <h2>Contact</h2>
-    <p>Questions can be sent to <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
-    <p><em>Last updated: {{ build.date | readableDate }}</em></p>
+    <p>These terms are governed by the laws of India. The courts at Bengaluru, Karnataka have exclusive jurisdiction over any dispute arising from them or from your use of this website.</p>
+
+    <h2>Contact us</h2>
+    <p>{{ site.legalName }}<br>{{ office.street }}, {{ office.postalCode }}, {{ office.region }}<br>Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a><br>Phone: <a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone }}</a></p>
+    <p><em>Last updated: {{ lastUpdated | readableDate }}</em></p>
   </div>
 </div></section>

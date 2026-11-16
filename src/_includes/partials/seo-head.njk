@@ -1,6 +1,6 @@
 {%- set pageTitle = (site.name ~ " | Academic Digital Transformation") if isHome else ((seoTitle or title) ~ " | " ~ site.name) -%}
 {%- set pageDesc = description or site.description -%}
-{%- set canonical = (canonicalPath or page.url) | absoluteUrl(site.url) -%}
+{%- set canonical = (canonicalPath or page.url or "/") | absoluteUrl(site.url) -%}
 {%- set ogImg = (ogImage or site.ogImage) | absoluteUrl(site.url) -%}
 <title>{{ pageTitle }}</title>
 <meta name="description" content="{{ pageDesc }}">

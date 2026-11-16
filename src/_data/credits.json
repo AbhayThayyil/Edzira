@@ -1,1 +1,13 @@
-{}
+{
+  "note": "Record of where each stock photo came from. Not shown on the site. Unsplash and Pexels licences allow commercial use without attribution.",
+  "photos": {
+    "hero-campus": { "photographer": "Wonderlane", "source": "https://unsplash.com/photos/6zlgM-GUd6I" },
+    "insight-campus": { "photographer": "Dennis Zhang", "source": "https://unsplash.com/photos/J16r3dyRM-M" },
+    "insight-cyber": { "photographer": "Markus Spiske", "source": "https://unsplash.com/photos/hvSr_CVecVI" },
+    "insight-learning": { "photographer": "X (Unsplash)", "source": "https://unsplash.com/photos/7d4LREDSPyQ" },
+    "pilot-training": { "photographer": "Herlambang Tinasih Gusti", "source": "https://unsplash.com/photos/3kc_75Rdgyk" },
+    "serve-colleges": { "photographer": "Priscilla Du Preez", "source": "https://unsplash.com/photos/XkKCui44iM0" },
+    "serve-government": { "photographer": "Zoshua Colah", "source": "https://unsplash.com/photos/PsNi4Ooaag0" },
+    "serve-universities": { "photographer": "George Pak", "source": "https://www.pexels.com/photo/7972324/" }
+  }
+}

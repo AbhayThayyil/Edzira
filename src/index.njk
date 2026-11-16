@@ -189,7 +189,8 @@ description: Edzira helps universities, colleges and public institutions moderni
   </div>
 </section>
 
-{# ============ INSIGHTS ============ #}
+{# ============ INSIGHTS (hidden until site.showInsights is true) ============ #}
+{% if site.showInsights %}
 <section class="section section--soft" aria-labelledby="insights-title">
   <div class="container">
     <header class="section-head section-head--split" data-reveal>
@@ -214,6 +215,7 @@ description: Edzira helps universities, colleges and public institutions moderni
     </div>
   </div>
 </section>
+{% endif %}
 
 {# ============ CTA ============ #}
 {{ ctaBand() }}
