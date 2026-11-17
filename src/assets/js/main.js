@@ -119,15 +119,15 @@ if (form) {
   form.noValidate = true;
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   const checkers = {
-    name: (v) => (!v ? "Please enter your full name." : v.length < 2 ? "Please enter at least 2 characters." : ""),
-    email: (v) => (!v ? "Please enter your work email." : !emailRe.test(v) ? "Please enter a valid email address, like name@institution.edu." : ""),
-    institution: (v) => (v.length < 2 ? "Please tell us which institution or organisation you are with." : ""),
+    name: (v) => (v.length < 2 ? "Please enter your full name." : ""),
+    email: (v) => (!v ? "Please enter your work email." : !emailRe.test(v) ? "Please enter a valid email address." : ""),
+    institution: (v) => (v.length < 2 ? "Please enter your institution or organisation." : ""),
     phone: (v) => {
       if (!v) return ""; // optional
       const digits = v.replace(/\D/g, "").length;
-      return /^[+\d\s().-]+$/.test(v) && digits >= 7 && digits <= 15 ? "" : "Please enter a valid phone number, for example +91 98765 43210.";
+      return /^[+\d\s().-]+$/.test(v) && digits >= 7 && digits <= 15 ? "" : "Please enter a valid phone number.";
     },
-    message: (v) => (!v ? "Please tell us how we can help." : v.length < 10 ? "Please add a little more detail (at least 10 characters)." : ""),
+    message: (v) => (!v ? "Please tell us how we can help." : v.length < 10 ? "Please enter at least 10 characters." : ""),
   };
   const fields = Object.keys(checkers).map((n) => form.elements[n]);
   const setError = (el, msg) => {

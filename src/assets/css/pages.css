@@ -110,7 +110,8 @@ a.card:hover .icon-arrow { transform: translateX(4px); }
 .contact__aside { padding-top: calc(var(--form-pad) + 1px); }
 @media (max-width: 960px) { .contact__aside { padding-top: 0; } }
 .form { padding: var(--form-pad, clamp(1.5rem, 1rem + 2vw, 2.5rem)); border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
-.form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+/* align-items: start keeps a field at its own height, so an error message under one field doesn't stretch its neighbour */
+.form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); align-items: start; }
 .form__full { grid-column: 1 / -1; }
 @media (max-width: 600px) { .form__grid { grid-template-columns: 1fr; } }
 .field { display: grid; gap: 6px; }
@@ -125,7 +126,7 @@ a.card:hover .icon-arrow { transform: translateX(4px); }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; background: #fff; border-color: var(--teal-500); box-shadow: 0 0 0 4px rgb(14 145 153 / .15); }
 .field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #d14343; }
 .field input[aria-invalid="true"]:focus, .field textarea[aria-invalid="true"]:focus { box-shadow: 0 0 0 4px rgb(209 67 67 / .15); }
-.field__error { margin: 6px 0 0; font-size: 0.8125rem; line-height: 1.4; color: #b42318; }
+.field__error { margin: 0; font-size: 0.8125rem; line-height: 1.4; color: #b42318; }
 /* Area of interest: selectable chips (native radios, so keyboard and forms work as normal) */
 .choice { border: 0; margin: 0; padding: 0; min-width: 0; }
 .choice legend { padding: 0; margin-bottom: 6px; font-size: var(--fs-sm); font-weight: 600; color: var(--ink); }
