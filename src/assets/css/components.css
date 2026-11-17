@@ -26,6 +26,15 @@
 .btn--ghost:hover { --btn-bg: var(--bg-soft); --btn-fg: var(--ink); box-shadow: none; }
 .section--dark .btn--ghost, .on-dark .btn--ghost { --btn-fg: #fff; border-color: rgb(255 255 255 / 0.28); }
 .section--dark .btn--ghost:hover, .on-dark .btn--ghost:hover { --btn-bg: rgb(255 255 255 / 0.08); }
+/* Loading state (contact form submit): spinner replaces the arrow while the request is in flight */
+.btn.is-loading { pointer-events: none; cursor: progress; }
+.btn.is-loading .icon-arrow { display: none; }
+.btn.is-loading::before {
+  content: ""; flex: none; width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid currentColor; border-right-color: transparent;
+  animation: btn-spin 0.7s linear infinite;
+}
+@keyframes btn-spin { to { transform: rotate(360deg); } }
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
 
 .link-arrow { display: inline-flex; align-items: center; gap: var(--sp-2); font-weight: 600; text-decoration: none; }

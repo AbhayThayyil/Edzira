@@ -113,15 +113,70 @@ if (form) {
   if (interest && form.interest) form.interest.value = interest;
   const status = form.querySelector(".form__status");
   const show = (state, msg) => { status.hidden = false; status.dataset.state = state; status.textContent = msg; };
+
+  // Validation. Each checker gets the trimmed value and returns an error message, or "" when the value is fine.
+  // `noValidate` is set here, not in the markup, so the browser's own checks still work if JavaScript fails.
+  form.noValidate = true;
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const checkers = {
+    name: (v) => (!v ? "Please enter your full name." : v.length < 2 ? "Please enter at least 2 characters." : ""),
+    email: (v) => (!v ? "Please enter your work email." : !emailRe.test(v) ? "Please enter a valid email address, like name@institution.edu." : ""),
+    institution: (v) => (v.length < 2 ? "Please tell us which institution or organisation you are with." : ""),
+    phone: (v) => {
+      if (!v) return ""; // optional
+      const digits = v.replace(/\D/g, "").length;
+      return /^[+\d\s().-]+$/.test(v) && digits >= 7 && digits <= 15 ? "" : "Please enter a valid phone number, for example +91 98765 43210.";
+    },
+    message: (v) => (!v ? "Please tell us how we can help." : v.length < 10 ? "Please add a little more detail (at least 10 characters)." : ""),
+  };
+  const fields = Object.keys(checkers).map((n) => form.elements[n]);
+  const setError = (el, msg) => {
+    let err = el.parentElement.querySelector(".field__error");
+    if (!err) {
+      err = document.createElement("p");
+      err.className = "field__error";
+      err.id = `${el.id}-error`;
+      el.insertAdjacentElement("afterend", err);
+    }
+    err.textContent = msg;
+    err.hidden = !msg;
+    if (msg) { el.setAttribute("aria-invalid", "true"); el.setAttribute("aria-describedby", err.id); }
+    else { el.removeAttribute("aria-invalid"); el.removeAttribute("aria-describedby"); }
+  };
+  const check = (el, trim) => {
+    if (trim) el.value = el.value.trim();
+    const msg = checkers[el.name](el.value.trim());
+    setError(el, msg);
+    return !msg;
+  };
+  fields.forEach((el) => {
+    // Check when leaving a field that has been filled in or already flagged; re-check as the person fixes it.
+    el.addEventListener("blur", () => { if (el.value.trim() || el.hasAttribute("aria-invalid")) check(el, true); });
+    el.addEventListener("input", () => { if (el.hasAttribute("aria-invalid")) check(el, false); });
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (form._gotcha.value) return;
+    const invalid = fields.filter((el) => !check(el, true));
+    if (invalid.length) {
+      show("error", "Please correct the highlighted fields and try again.");
+      invalid[0].focus();
+      return;
+    }
     if (form.action.includes("YOUR_FORM_ID")) {
       show("error", "The form isn't connected yet. Please email us directly in the meantime.");
       return;
     }
     const btn = form.querySelector("[type=submit]");
+    const label = btn.querySelector(".btn__label");
+    const idleLabel = label.textContent;
+    // Loading state: spinner, "Sending…" label and a disabled button until Formspree answers.
+    status.hidden = true;
     btn.disabled = true;
+    btn.classList.add("is-loading");
+    btn.setAttribute("aria-busy", "true");
+    label.textContent = "Sending…";
     try {
       const res = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
       if (!res.ok) throw new Error();
@@ -131,6 +186,9 @@ if (form) {
       show("error", "Sorry, something went wrong. Please try again or email us directly.");
     } finally {
       btn.disabled = false;
+      btn.classList.remove("is-loading");
+      btn.removeAttribute("aria-busy");
+      label.textContent = idleLabel;
     }
   });
 }

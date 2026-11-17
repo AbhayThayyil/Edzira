@@ -123,7 +123,9 @@ a.card:hover .icon-arrow { transform: translateX(4px); }
 }
 .field textarea { min-height: 140px; resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; background: #fff; border-color: var(--teal-500); box-shadow: 0 0 0 4px rgb(14 145 153 / .15); }
-.field input:user-invalid, .field textarea:user-invalid { border-color: #d14343; }
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #d14343; }
+.field input[aria-invalid="true"]:focus, .field textarea[aria-invalid="true"]:focus { box-shadow: 0 0 0 4px rgb(209 67 67 / .15); }
+.field__error { margin: 6px 0 0; font-size: 0.8125rem; line-height: 1.4; color: #b42318; }
 /* Area of interest: selectable chips (native radios, so keyboard and forms work as normal) */
 .choice { border: 0; margin: 0; padding: 0; min-width: 0; }
 .choice legend { padding: 0; margin-bottom: 6px; font-size: var(--fs-sm); font-weight: 600; color: var(--ink); }

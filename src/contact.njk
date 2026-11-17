@@ -22,11 +22,11 @@ schemaExtra:
       <h2 style="font-size:var(--fs-xl)">Book a consultation</h2>
       <p class="form__note" style="margin-bottom:var(--sp-5)">Tell us a little about your institution. We usually reply within one working day.</p>
       <div class="form__grid">
-        <div class="field"><label for="f-name">Full name</label><input type="text" id="f-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="field form__full"><label for="f-org">Institution / organisation</label><input type="text" id="f-org" name="institution" autocomplete="organization" required></div>
-        <div class="field"><label for="f-role">Designation <span class="opt">(optional)</span></label><input type="text" id="f-role" name="designation" autocomplete="organization-title"></div>
-        <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="f-name">Full name</label><input type="text" id="f-name" name="name" autocomplete="name" maxlength="100" required></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+        <div class="field form__full"><label for="f-org">Institution / organisation</label><input type="text" id="f-org" name="institution" autocomplete="organization" maxlength="150" required></div>
+        <div class="field"><label for="f-role">Designation <span class="opt">(optional)</span></label><input type="text" id="f-role" name="designation" autocomplete="organization-title" maxlength="100"></div>
+        <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="20"></div>
         <fieldset class="field form__full choice">
           <legend>Area of interest <span class="opt">(optional)</span></legend>
           <div class="choice__grid">
@@ -35,11 +35,11 @@ schemaExtra:
             <label class="choice__item"><input type="radio" name="interest" value="other"><span>{{ icon("spark", 18) | safe }}Something else</span></label>
           </div>
         </fieldset>
-        <div class="field form__full"><label for="f-msg">How can we help?</label><textarea id="f-msg" name="message" required></textarea></div>
+        <div class="field form__full"><label for="f-msg">How can we help?</label><textarea id="f-msg" name="message" maxlength="2000" required></textarea></div>
         <label class="form__hp" aria-hidden="true">Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
       </div>
       <div class="form__foot">
-        <button class="btn" type="submit">Send message {{ arrow() }}</button>
+        <button class="btn" type="submit"><span class="btn__label">Send message</span> {{ arrow() }}</button>
         <p class="form__note">We respect your privacy. See our <a href="/privacy/">privacy policy</a>.</p>
       </div>
       <p class="form__status" role="status" aria-live="polite" hidden></p>

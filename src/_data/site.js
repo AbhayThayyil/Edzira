@@ -1,5 +1,5 @@
 // Global site settings. SITE_URL is set at build time once the domain is decided:
-//   SITE_URL=https://www.edzira.com npm run build
+//   SITE_URL=https://edzira.com npm run build
 const social = { linkedin: "", x: "", youtube: "" };
 
 const offices = [
@@ -8,7 +8,7 @@ const offices = [
 
 export default {
   name: "Edzira",
-  legalName: "Edzira Learning Private Limited",
+  legalName: "Edzira Digital Technologies Private Limited",
   tagline: "Transforming Institutions. Enabling Futures.",
   description:
     "Edzira partners with universities, colleges and public institutions to modernise learning, strengthen student outcomes and build future-ready academic ecosystems.",
